@@ -7,12 +7,12 @@ body {
     line-height: 30px;
 }
 
-a{
-  color:rgb(45, 240, 224);
-}
-
-a:active, a:hover{
-  color:rgb(240 243 243);
+.customHeading {
+    display: block;
+    font-size: 3em;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-weight: bold;
 }
 
 .darkContainer, .lightContainer{
@@ -22,20 +22,25 @@ a:active, a:hover{
     margin-bottom: 0.5rem;
 }
 
-.lightContainer{
+.lightContainer, .nav_style a:hover{
     background-color: rgb(192 249 226);
     color:rgb(1 50 31);
 }
 
-.darkContainer{
+.darkContainer, .nav_style, .nav_style a{
     background-color: rgb(1 50 31);
     color:rgb(192 249 226);
+    text-decoration: none;
 }
 
-.customHeading {
+.nav_style a{
+    padding:3rem;
+}
+
+.nav_style {
+    float: left;
     display: block;
-    font-size: 3em;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    font-weight: bold;
+    overflow: hidden;
+    width:100%;
+    padding: 1rem;
 }
