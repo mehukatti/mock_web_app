@@ -1,3 +1,8 @@
 *
 !.gitignore
 !readme.md
+
+!styles/
+
+!*.css
+!*.html
