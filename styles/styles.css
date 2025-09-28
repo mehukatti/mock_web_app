@@ -22,6 +22,10 @@ body {
     padding-bottom:1rem;
 }
 
+.productName{
+    font-weight: bold;
+}
+
 .lightContainer, .nav_style a:hover{
     background-color: rgb(192 249 226);
     color:rgb(1 50 31);
