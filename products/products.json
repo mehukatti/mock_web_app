@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Apple",
+        "image": "apple.png",
+        "description": "Delicious, sweet and shiny red apple as the Red Delicious variety should be. Suitable as is or in salads and ciders. Only your imagination is the limit. Reach big."
+    },
+    {
+        "id": 2,
+        "name": "Banana",
+        "image": "banana.png",
+        "description": "Cavendish banana. Not the best considering the taste, but the most imported banana. After the previously most imported, and better tasting banana variety 'Gros Michael' was destroyed by the Panama disease in the 50's, the Cavendish variety became the second best alternative."
+    },
+    {
+        "id": 3,
+        "name": "Orange",
+        "image": "orange.png",
+        "description": "Sweet and juicy orange. Just the way the universum intended it. The variety is Navel, which has zero to little seeds and thin peels; easier to enjoy."
+    },
+    {
+        "id": 4,
+        "name": "Pear",
+        "image": "pear.png",
+        "description": "Sweet and juicy pear. Suitable for anything from snacks to cider. Did you know pear plant belong to rose family?"
+    }
+]
