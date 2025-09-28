@@ -51,7 +51,7 @@ function createProductView(productData, newList){
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
     imageElement.alt = productData.image;
-    newList.appendChild(imageElement);
+    productElement.appendChild(imageElement);
 }
 
 function createTextElement(type, className, value){
