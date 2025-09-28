@@ -43,15 +43,28 @@ function createProductView(productData, newList){
     productElement.className = "lightContainer";
     newList.appendChild(productElement);
 
-    // Add product name to it
-    sub = createTextElement("div", "productName", productData.name);
-    productElement.appendChild(sub);
-
     // Add image of the product.
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
     imageElement.alt = productData.image;
-    productElement.appendChild(imageElement);
+    newList.appendChild(imageElement);
+
+    // Add product name to it
+    sub = createTextElement("div", "productName", productData.name);
+    productElement.appendChild(sub);
+
+    // Show first 100 char of description and add "..." if the description is longer.
+    const descriptionElement = document.createElement("p");
+    descriptionElement.textContent = descriptionReview(productData.description);
+    newList.appendChild(descriptionElement);
+}
+
+function descriptionReview(desc){
+    if (desc.length > 100){
+        return desc.substring(0,100).concat("...");
+    } else {
+        return desc;
+    }
 }
 
 function createTextElement(type, className, value){
