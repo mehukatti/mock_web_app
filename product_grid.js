@@ -11,7 +11,7 @@ document.body.appendChild(mainContent);
 readJSON(`products/products.json`);
 
 function readJSON(dataJson){
-    newList = createTextElement("class", "lightContainer", "");
+    newList = createTextElement("class", "shopContainer", "");
     mainContent.appendChild(newList);
 
     // Read the json
@@ -26,8 +26,7 @@ function readJSON(dataJson){
     .then((data) => {
         for (var content of data){
             //Create sub content on subtitle level
-            sub = createTextElement("h1", "darkContainer", content.name);
-            newList.appendChild(sub);
+            createProductView(content, newList);
         }
         
     })
@@ -36,6 +35,18 @@ function readJSON(dataJson){
         p.appendChild(document.createTextNode(`Error: ${error.message}`));
         document.body.insertBefore(p, mainContent);
     });
+}
+
+function createProductView(productData, newList){
+    // Create the product element to contain name, and image of the product.
+    const productElement = document.createElement("div");
+    productElement.className = "lightContainer";
+    newList.appendChild(productElement);
+
+    // Add product name to it
+    // Add important stuff
+    sub = createTextElement("div", "productName", content.name);
+    productElement.appendChild(sub);
 }
 
 function createTextElement(type, className, value){
