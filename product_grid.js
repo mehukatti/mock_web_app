@@ -47,7 +47,7 @@ function createProductView(productData, newList){
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
     imageElement.alt = productData.image;
-    newList.appendChild(imageElement);
+    productElement.appendChild(imageElement);
 
     // Add product name to it
     sub = createTextElement("div", "productName", productData.name);
@@ -56,7 +56,7 @@ function createProductView(productData, newList){
     // Show first 100 char of description and add "..." if the description is longer.
     const descriptionElement = document.createElement("p");
     descriptionElement.textContent = descriptionReview(productData.description);
-    newList.appendChild(descriptionElement);
+    productElement.appendChild(descriptionElement);
 }
 
 function descriptionReview(desc){
