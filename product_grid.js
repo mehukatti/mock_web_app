@@ -45,7 +45,7 @@ function createProductView(productData, newList){
 
     // Add product name to it
     // Add important stuff
-    sub = createTextElement("div", "productName", content.name);
+    sub = createTextElement("div", "productName", productData.name);
     productElement.appendChild(sub);
 }
 
