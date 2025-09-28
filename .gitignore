@@ -3,6 +3,8 @@
 !readme.md
 
 !styles/
+!products/
+!products/**
 
 !*.css
 !*.html
