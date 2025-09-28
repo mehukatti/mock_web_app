@@ -44,9 +44,14 @@ function createProductView(productData, newList){
     newList.appendChild(productElement);
 
     // Add product name to it
-    // Add important stuff
     sub = createTextElement("div", "productName", productData.name);
     productElement.appendChild(sub);
+
+    // Add image of the product.
+    const imageElement = document.createElement("img");
+    imageElement.src = `products/images${productData.image}`;
+    imageElement.alt = productData.image;
+    newList.appendChild(imageElement);
 }
 
 function createTextElement(type, className, value){
