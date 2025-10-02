@@ -15,17 +15,21 @@ body {
     font-weight: bold;
 }
 
-.darkContainer, .lightContainer{
+.darkContainer, .lightContainer, .productContainer{
     border-radius: 10px;
     margin: 3rem;
     padding: 3rem;
+}
+
+.productContainer{
+    max-width: 350px
 }
 
 .productName{
     font-weight: bold;
 }
 
-.lightContainer, .nav_style a:hover{
+.lightContainer, .productContainer, .nav_style a:hover{
     background-color: rgb(192 249 226);
     color:rgb(1 50 31);
 }

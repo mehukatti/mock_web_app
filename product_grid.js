@@ -58,7 +58,7 @@ function createProductView(productData, collectionElement){
     collectionElement.appendChild(columnElement);
 
     const productElement = document.createElement("div");
-    productElement.className = "lightContainer";
+    productElement.className = "productContainer";
     columnElement.appendChild(productElement);
 
     // Add image of the product.
