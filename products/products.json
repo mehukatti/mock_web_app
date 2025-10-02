@@ -15,12 +15,18 @@
         "id": 3,
         "name": "Orange",
         "image": "orange.png",
-        "description": "Sweet and juicy orange. Just the way the universum intended it. The variety is Navel, which has zero to little seeds and thin peels; easier to enjoy."
+        "description": "Sweet and juicy orange. Just the way the Universe intended it. The variety is Navel, which has zero to little seeds and thin peels; easier to enjoy."
     },
     {
         "id": 4,
         "name": "Pear",
         "image": "pear.png",
         "description": "Sweet and juicy pear. Suitable for anything from snacks to cider. Did you know pear plant belong to rose family?"
+    },
+    {
+        "id": 5,
+        "name": "Pineapple",
+        "image": "pineapple.png",
+        "description": "This fashionable fruit can be used as anything ranging from fancy drink bowl to haircut inspiration. Pineapples were once rented as table pieces to show case status."
     }
 ]
