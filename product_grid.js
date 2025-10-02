@@ -1,7 +1,7 @@
 var document;
 
 //Create content from one json
-const mainContent = document.createElement("class");
+const mainContent = document.createElement("div");
 mainContent.className = "shopContainer";
 mainContent.id = `productlist`;
 //mainContent.textContent = "This appears"
@@ -11,7 +11,7 @@ document.body.appendChild(mainContent);
 readJSON(`products/products.json`);
 
 function readJSON(dataJson){
-    newList = createTextElement("class", "shopContainer", "");
+    newList = createTextElement("div", "shopContainer", "");
     mainContent.appendChild(newList);
 
     // Read the json
@@ -24,9 +24,23 @@ function readJSON(dataJson){
     })
 
     .then((data) => {
+
+        // Each row has 3 columns
+        var columnCounter = 0;
+        var rowElement = document.createElement("div");
+        rowElement.className = "row";
+        newList.appendChild(rowElement);
+
         for (var content of data){
             //Create sub content on subtitle level
-            createProductView(content, newList);
+            columnCounter = columnCounter + 1;
+            if (columnCounter == 4){
+                var rowElement = document.createElement("div");
+                rowElement.className = "row";
+                newList.appendChild(rowElement);
+                columnCounter = 0;
+            }
+            createProductView(content, rowElement);
         }
         
     })
@@ -37,11 +51,15 @@ function readJSON(dataJson){
     });
 }
 
-function createProductView(productData, newList){
+function createProductView(productData, collectionElement){
     // Create the product element to contain name, and image of the product.
+    const columnElement = document.createElement("div");
+    columnElement.className = "col-sm-4";
+    collectionElement.appendChild(columnElement);
+
     const productElement = document.createElement("div");
     productElement.className = "lightContainer";
-    newList.appendChild(productElement);
+    columnElement.appendChild(productElement);
 
     // Add image of the product.
     const imageElement = document.createElement("img");
