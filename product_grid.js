@@ -62,10 +62,13 @@ function createProductView(productData, collectionElement){
     columnElement.appendChild(productElement);
 
     // Add image of the product.
+    const linkElement = document.createElement("a");
+    linkElement.href = `product?fruit=${productData.name}`
+    productElement.appendChild(linkElement);
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
     imageElement.alt = productData.image;
-    productElement.appendChild(imageElement);
+    linkElement.appendChild(imageElement);
 
     // Add product name to it
     sub = createTextElement("div", "productName", productData.name);
