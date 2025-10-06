@@ -8,7 +8,7 @@ mainContent.id = `productlist`;
 
 document.body.appendChild(mainContent);
 
-const fruit = getProductName('fruit');
+const fruit = getProductName('productId');
 productElement = createTextElement("div", "shopContainer", fruit);
 mainContent.appendChild(productElement);
 
@@ -20,6 +20,10 @@ function getProductName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function getProductData(product){
+
 }
 
 function createTextElement(type, className, value){
