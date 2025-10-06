@@ -68,9 +68,13 @@ function getProductData(productId, dataJson){
 
 function createProductView(productData, collectionElement){
     // Create the product element to contain name, and image of the product.
+    const columnElement = document.createElement("div");
+    columnElement.className = "col-sm-4";
+    collectionElement.appendChild(columnElement);
+
     const productElement = document.createElement("div");
-    productElement.className = "col-sm-4 productContainer";
-    collectionElement.appendChild(productElement);
+    productElement.className = "productContainer";
+    columnElement.appendChild(productElement);
 
     // Add image of the product.
     const linkElement = document.createElement("a");
@@ -87,7 +91,7 @@ function createProductView(productData, collectionElement){
 
     // Show first 100 char of description and add "..." if the description is longer.
     const descriptionElement = document.createElement("p");
-    descriptionElement.textContent = productData.description;
+    descriptionElement.textContent = descriptionReview(productData.description);
     productElement.appendChild(descriptionElement);
 }
 
