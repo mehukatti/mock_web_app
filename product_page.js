@@ -12,6 +12,8 @@ const productId = getProductName('productId');
 productElement = createTextElement("div", "shopContainer", productId);
 mainContent.appendChild(productElement);
 
+getProductData(productId, `products/products.json`)
+
 function getProductName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
