@@ -9,8 +9,6 @@ mainContent.id = `productlist`;
 document.body.appendChild(mainContent);
 
 const productId = getProductName('productId');
-productElement = createTextElement("div", "shopContainer", productId);
-mainContent.appendChild(productElement);
 
 getProductData(productId, `products/products.json`)
 
