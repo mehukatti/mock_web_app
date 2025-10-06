@@ -53,13 +53,9 @@ function readJSON(dataJson){
 
 function createProductView(productData, collectionElement){
     // Create the product element to contain name, and image of the product.
-    const columnElement = document.createElement("div");
-    columnElement.className = "col-sm-4";
-    collectionElement.appendChild(columnElement);
-
     const productElement = document.createElement("div");
-    productElement.className = "productContainer";
-    columnElement.appendChild(productElement);
+    productElement.className = "col-sm-4 productContainer";
+    collectionElement.appendChild(productElement);
 
     // Add image of the product.
     const linkElement = document.createElement("a");
