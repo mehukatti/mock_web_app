@@ -15,7 +15,11 @@ body {
     font-weight: bold;
 }
 
-.darkContainer, .lightContainer, .productContainer{
+.col-sm-4, .col-sm-6, .col-6, .col-md-4, .col-12, .col-md-8{
+    place-items: center;
+}
+
+.darkContainer, .lightContainer, .productContainer, .dataContainer{
     border-radius: 10px;
     margin: 3rem;
     padding: 3rem;
@@ -29,7 +33,7 @@ body {
     font-weight: bold;
 }
 
-.lightContainer, .productContainer, .nav_style a:hover{
+.lightContainer, .productContainer, .dataContainer, .nav_style a:hover{
     background-color: rgb(192 249 226);
     color:rgb(1 50 31);
 }
