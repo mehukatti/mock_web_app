@@ -19,6 +19,11 @@ body {
     place-items: center;
 }
 
+.shopRow{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .darkContainer, .lightContainer, .productContainer, .dataContainer{
     border-radius: 10px;
     margin: 3rem;
