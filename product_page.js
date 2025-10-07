@@ -69,4 +69,8 @@ function updateProductTemplate(productData){
     // Update product description
     const descriptionElement = document.getElementById("desc");
     descriptionElement.innerHTML = productData.description;
+
+    // Update price
+    const priceElement = document.getElementById("price");
+    priceElement.innerHTML = `${productData.price.toString()} ${productData.unit}`;
 }
