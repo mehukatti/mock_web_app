@@ -11,8 +11,6 @@ document.body.appendChild(mainContent);
 readJSON(`products/products.json`);
 
 function readJSON(dataJson){
-    newList = createTextElement("div", "shopContainer", "");
-    mainContent.appendChild(newList);
 
     // Read the json
     fetch(dataJson)
@@ -29,7 +27,7 @@ function readJSON(dataJson){
         var columnCounter = 0;
         var rowElement = document.createElement("div");
         rowElement.className = "row";
-        newList.appendChild(rowElement);
+        mainContent.appendChild(rowElement);
 
         for (var content of data){
             //Create sub content on subtitle level
@@ -37,7 +35,7 @@ function readJSON(dataJson){
             if (columnCounter == 4){
                 var rowElement = document.createElement("div");
                 rowElement.className = "row";
-                newList.appendChild(rowElement);
+                mainContent.appendChild(rowElement);
                 columnCounter = 0;
             }
             createProductView(content, rowElement);
