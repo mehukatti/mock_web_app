@@ -80,11 +80,18 @@ function createProductView(productData, collectionElement){
     descriptionElement.textContent = descriptionReview(productData.description);
     productElement.appendChild(descriptionElement);
 
+    // Shop row
+    const shopRowElement = document.createElement("div");
+    productElement.appendChild(shopRowElement);
+
+    // Price tag
+    const priceElement = document.createElement("p");
+    priceElement.textContent = `${productData.price.toString()} ${productData.unit}`;
+
     // Shopping cart button
-    // <button class="button glyphicon glyphicon-shopping-cart" alt="Add to cart"></button>
     const cartButton = createTextElement("button", "button glyphicon glyphicon-shopping-cart", "");
     cartButton.alt = "Add to cart";
-    productElement.appendChild(cartButton);
+    shopRowElement.appendChild(cartButton);
 }
 
 function descriptionReview(desc){
