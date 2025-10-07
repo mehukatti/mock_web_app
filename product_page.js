@@ -39,20 +39,7 @@ function getProductData(productId, dataJson){
 
         for (var content of data){
             if (content.id == productId){
-                // Each row has 3 columns
-                var columnCounter = 0;
-                var rowElement = document.createElement("div");
-                rowElement.className = "row";
-                mainContent.appendChild(rowElement);
-                //Create sub content on subtitle level
-                columnCounter = columnCounter + 1;
-                if (columnCounter == 4){
-                    var rowElement = document.createElement("div");
-                    rowElement.className = "row";
-                    mainContent.appendChild(rowElement);
-                    columnCounter = 0;
-                }
-                createProductView(content, rowElement);
+                updateProductTemplate(content);
             }
         }
         
@@ -64,41 +51,21 @@ function getProductData(productId, dataJson){
     });
 }
 
-function createProductView(productData, collectionElement){
-    // Create the product element to contain name, and image of the product.
-    const columnElement = document.createElement("div");
-    columnElement.className = "col-sm-4";
-    collectionElement.appendChild(columnElement);
-
-    const productElement = document.createElement("div");
-    productElement.className = "productContainer";
-    columnElement.appendChild(productElement);
-
-    // Add image of the product.
-    const linkElement = document.createElement("a");
-    linkElement.href = `product?productId=${productData.id}`
-    productElement.appendChild(linkElement);
+function updateProductTemplate(productData){
+    //Update image
+    const parentImageElement = document.getElementById("image");
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
     imageElement.alt = productData.image;
-    linkElement.appendChild(imageElement);
+    parentImageElement.appendChild(imageElement);
 
-    // Add product name to it
-    sub = createTextElement("div", "productName", productData.name);
-    productElement.appendChild(sub);
+    //Update name
+    const nameElement = document.getElementById("name");
+    nameElement.innerHTML = productData.name;
 
-    // Show first 100 char of description and add "..." if the description is longer.
-    const descriptionElement = document.createElement("p");
-    descriptionElement.textContent = descriptionReview(productData.description);
-    productElement.appendChild(descriptionElement);
-}
-
-function descriptionReview(desc){
-    if (desc.length > 100){
-        return desc.substring(0,100).concat("...");
-    } else {
-        return desc;
-    }
+    //Update product description
+    const descriptionElement = document.getElementById("desc");
+    descriptionElement.innerHTML = productData.description;
 }
 
 function createTextElement(type, className, value){
