@@ -23,8 +23,6 @@ function getProductName(name, url) {
 }
 
 function getProductData(productId, dataJson){
-    newList = createTextElement("div", "shopContainer", "");
-    mainContent.appendChild(newList);
 
     // Read the json
     fetch(dataJson)
@@ -45,13 +43,13 @@ function getProductData(productId, dataJson){
                 var columnCounter = 0;
                 var rowElement = document.createElement("div");
                 rowElement.className = "row";
-                newList.appendChild(rowElement);
+                mainContent.appendChild(rowElement);
                 //Create sub content on subtitle level
                 columnCounter = columnCounter + 1;
                 if (columnCounter == 4){
                     var rowElement = document.createElement("div");
                     rowElement.className = "row";
-                    newList.appendChild(rowElement);
+                    mainContent.appendChild(rowElement);
                     columnCounter = 0;
                 }
                 createProductView(content, rowElement);
