@@ -50,16 +50,19 @@ function readJSON(dataJson){
 }
 
 function createProductView(productData, collectionElement){
-    // Create the product element to contain name, and image of the product.
+    // Create view for one product
+
+    //Bootstrap column
     const columnElement = document.createElement("div");
-    columnElement.className = "col-sm-4";
+    columnElement.className = "col-md-4";
     collectionElement.appendChild(columnElement);
 
+    // Product container to get the desired styling
     const productElement = document.createElement("div");
     productElement.className = "productContainer";
     columnElement.appendChild(productElement);
 
-    // Add image of the product.
+    // Add image of the product with a link
     const linkElement = document.createElement("a");
     linkElement.href = `product?productId=${productData.id}`
     productElement.appendChild(linkElement);
