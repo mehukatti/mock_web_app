@@ -52,18 +52,21 @@ function getProductData(productId, dataJson){
 }
 
 function updateProductTemplate(productData){
-    //Update image
+    // Update title
+    document.title = productData.name;
+
+    // Update image
     const parentImageElement = document.getElementById("image");
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
     imageElement.alt = productData.image;
     parentImageElement.appendChild(imageElement);
 
-    //Update name
+    // Update name
     const nameElement = document.getElementById("name");
     nameElement.innerHTML = productData.name;
 
-    //Update product description
+    // Update product description
     const descriptionElement = document.getElementById("desc");
     descriptionElement.innerHTML = productData.description;
 }
