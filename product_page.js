@@ -67,10 +67,3 @@ function updateProductTemplate(productData){
     const descriptionElement = document.getElementById("desc");
     descriptionElement.innerHTML = productData.description;
 }
-
-function createTextElement(type, className, value){
-    const element = document.createElement(type); // Would like this to be a explanation element type
-    element.className = className;
-    element.textContent = value;
-    return element;
-}
