@@ -22,6 +22,8 @@ body {
 .shopRow{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 2rem;
 }
 
 .darkContainer, .lightContainer, .productContainer, .dataContainer{
@@ -41,6 +43,7 @@ img{
 .productName{
     font-weight: bold;
     padding-top: 2rem;
+    font-size: 20px;
 }
 
 .lightContainer, .productContainer, .dataContainer, .nav_style a:hover{
