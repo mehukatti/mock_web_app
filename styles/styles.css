@@ -35,6 +35,7 @@ img{
 
 .productName{
     font-weight: bold;
+    padding-top: 2rem;
 }
 
 .lightContainer, .productContainer, .dataContainer, .nav_style a:hover{
