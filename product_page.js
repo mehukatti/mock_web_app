@@ -8,9 +8,21 @@ mainContent.id = `productlist`;
 
 document.body.appendChild(mainContent);
 
-readJSON(`products/products.json`);
+const productId = getProductName('productId');
 
-function readJSON(dataJson){
+getProductData(productId, `products/products.json`)
+
+function getProductName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function getProductData(productId, dataJson){
     newList = createTextElement("div", "shopContainer", "");
     mainContent.appendChild(newList);
 
@@ -25,22 +37,25 @@ function readJSON(dataJson){
 
     .then((data) => {
 
-        // Each row has 3 columns
-        var columnCounter = 0;
-        var rowElement = document.createElement("div");
-        rowElement.className = "row";
-        newList.appendChild(rowElement);
+        // Select product that has correct productId
 
         for (var content of data){
-            //Create sub content on subtitle level
-            columnCounter = columnCounter + 1;
-            if (columnCounter == 4){
+            if (content.id == productId){
+                // Each row has 3 columns
+                var columnCounter = 0;
                 var rowElement = document.createElement("div");
                 rowElement.className = "row";
                 newList.appendChild(rowElement);
-                columnCounter = 0;
+                //Create sub content on subtitle level
+                columnCounter = columnCounter + 1;
+                if (columnCounter == 4){
+                    var rowElement = document.createElement("div");
+                    rowElement.className = "row";
+                    newList.appendChild(rowElement);
+                    columnCounter = 0;
+                }
+                createProductView(content, rowElement);
             }
-            createProductView(content, rowElement);
         }
         
     })
