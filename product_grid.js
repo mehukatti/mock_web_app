@@ -79,6 +79,12 @@ function createProductView(productData, collectionElement){
     const descriptionElement = document.createElement("p");
     descriptionElement.textContent = descriptionReview(productData.description);
     productElement.appendChild(descriptionElement);
+
+    // Shopping cart button
+    // <button class="button glyphicon glyphicon-shopping-cart" alt="Add to cart"></button>
+    const cartButton = createTextElement("button", "button glyphicon glyphicon-shopping-cart", "");
+    cartButton.alt = "Add to cart";
+    productElement.appendChild(cartButton);
 }
 
 function descriptionReview(desc){
