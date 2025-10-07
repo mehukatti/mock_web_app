@@ -87,6 +87,7 @@ function createProductView(productData, collectionElement){
     // Price tag
     const priceElement = document.createElement("p");
     priceElement.textContent = `${productData.price.toString()} ${productData.unit}`;
+    shopRowElement.appendChild(priceElement);
 
     // Shopping cart button
     const cartButton = createTextElement("button", "button glyphicon glyphicon-shopping-cart", "");
