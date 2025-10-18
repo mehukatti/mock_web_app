@@ -82,11 +82,11 @@ function createProductView(productData, collectionElement){
 
     // Shop row
     const shopRowElement = document.createElement("div");
-    shopRowElement.className = "d-flex flex-row justify-content-between";
+    shopRowElement.className = "d-flex flex-row justify-content-between align-items-center";
     productElement.appendChild(shopRowElement);
 
     // Price tag
-    const priceElement = document.createElement("p");
+    const priceElement = document.createElement("div");
     priceElement.textContent = `${productData.price.toString()} ${productData.unit}`;
     shopRowElement.appendChild(priceElement);
 
