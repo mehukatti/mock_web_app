@@ -11,8 +11,6 @@ document.body.appendChild(mainContent);
 readJSON(`products/products.json`);
 
 function readJSON(dataJson){
-    newList = createTextElement("div", "shopContainer", "");
-    mainContent.appendChild(newList);
 
     // Read the json
     fetch(dataJson)
@@ -29,7 +27,7 @@ function readJSON(dataJson){
         var columnCounter = 0;
         var rowElement = document.createElement("div");
         rowElement.className = "row";
-        newList.appendChild(rowElement);
+        mainContent.appendChild(rowElement);
 
         for (var content of data){
             //Create sub content on subtitle level
@@ -37,7 +35,7 @@ function readJSON(dataJson){
             if (columnCounter == 4){
                 var rowElement = document.createElement("div");
                 rowElement.className = "row";
-                newList.appendChild(rowElement);
+                mainContent.appendChild(rowElement);
                 columnCounter = 0;
             }
             createProductView(content, rowElement);
@@ -52,16 +50,19 @@ function readJSON(dataJson){
 }
 
 function createProductView(productData, collectionElement){
-    // Create the product element to contain name, and image of the product.
+    // Create view for one product
+
+    //Bootstrap column
     const columnElement = document.createElement("div");
-    columnElement.className = "col-sm-4";
+    columnElement.className = "col-md-4";
     collectionElement.appendChild(columnElement);
 
+    // Product container to get the desired styling
     const productElement = document.createElement("div");
     productElement.className = "productContainer";
     columnElement.appendChild(productElement);
 
-    // Add image of the product.
+    // Add image of the product with a link
     const linkElement = document.createElement("a");
     linkElement.href = `product?productId=${productData.id}`
     productElement.appendChild(linkElement);
@@ -78,6 +79,21 @@ function createProductView(productData, collectionElement){
     const descriptionElement = document.createElement("p");
     descriptionElement.textContent = descriptionReview(productData.description);
     productElement.appendChild(descriptionElement);
+
+    // Shop row
+    const shopRowElement = document.createElement("div");
+    shopRowElement.className = "d-flex flex-row justify-content-between";
+    productElement.appendChild(shopRowElement);
+
+    // Price tag
+    const priceElement = document.createElement("p");
+    priceElement.textContent = `${productData.price.toString()} ${productData.unit}`;
+    shopRowElement.appendChild(priceElement);
+
+    // Shopping cart button
+    const cartButton = createTextElement("button", "button glyphicon glyphicon-shopping-cart", "");
+    cartButton.alt = "Add to cart";
+    shopRowElement.appendChild(cartButton);
 }
 
 function descriptionReview(desc){

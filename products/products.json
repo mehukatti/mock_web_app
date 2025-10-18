@@ -3,30 +3,40 @@
         "id": 1,
         "name": "Apple",
         "image": "apple.png",
-        "description": "Delicious, sweet and shiny red apple as the Red Delicious variety should be. Suitable as is or in salads and ciders. Only your imagination is the limit. Reach big."
+        "description": "Delicious, sweet and shiny red apple as the Red Delicious variety should be. Suitable as is or in salads and ciders. Only your imagination is the limit. Reach big.",
+        "price": 1,
+        "unit": "€/kg"
     },
     {
         "id": 2,
         "name": "Banana",
         "image": "banana.png",
-        "description": "Cavendish banana. Not the best considering the taste, but the most imported banana. After the previously most imported, and better tasting banana variety 'Gros Michael' was destroyed by the Panama disease in the 50's, the Cavendish variety became the second best alternative."
+        "description": "Cavendish banana. Not the best considering the taste, but the most imported banana. After the previously most imported, and better tasting banana variety 'Gros Michael' was destroyed by the Panama disease in the 50's, the Cavendish variety became the second best alternative.",
+        "price": 1.5,
+        "unit": "€/kg"
     },
     {
         "id": 3,
         "name": "Orange",
         "image": "orange.png",
-        "description": "Sweet and juicy orange. Just the way the Universe intended it. The variety is Navel, which has zero to little seeds and thin peels; easier to enjoy."
+        "description": "Sweet and juicy orange. Just the way the Universe intended it. The variety is Navel, which has zero to little seeds and thin peels; easier to enjoy.",
+        "price": 2,
+        "unit": "€/kg"
     },
     {
         "id": 4,
         "name": "Pear",
         "image": "pear.png",
-        "description": "Sweet and juicy pear. Suitable for anything from snacks to cider. Did you know pear plant belong to rose family?"
+        "description": "Sweet and juicy pear. Suitable for anything from snacks to cider. Did you know pear plant belong to rose family?",
+        "price": 3,
+        "unit": "€/kg"
     },
     {
         "id": 5,
         "name": "Pineapple",
         "image": "pineapple.png",
-        "description": "This fashionable fruit can be used as anything ranging from fancy drink bowl to haircut inspiration. Pineapples were once rented as table pieces to show case status."
+        "description": "This fashionable fruit can be used as anything ranging from fancy drink bowl to haircut inspiration. Pineapples were once rented as table pieces to show case status.",
+        "price": 3,
+        "unit": "€/kg"
     }
 ]
