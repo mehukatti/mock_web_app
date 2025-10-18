@@ -7,6 +7,12 @@ body {
     margin: 0px;
 }
 
+/* To avoid vertical scroll bar caused by bootstrap */
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .customHeading {
     display: block;
     font-size: 3em;
