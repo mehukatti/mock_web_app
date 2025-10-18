@@ -7,6 +7,12 @@ body {
     margin: 0px;
 }
 
+/* To avoid vertical scroll bar caused by bootstrap */
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .customHeading {
     display: block;
     font-size: 3em;
@@ -15,7 +21,7 @@ body {
     font-weight: bold;
 }
 
-.col-sm-4, .col-sm-6, .col-6, .col-md-4, .col-12, .col-md-8{
+.col-sm-4, .col-sm-6, .col-6, .col-md-4, .col-12, .col-sm-8{
     place-items: center;
 }
 
@@ -25,12 +31,18 @@ body {
     padding: 3rem;
 }
 
+img{
+    width: 100%;
+}
+
 .productContainer{
-    max-width: 350px
+    max-width: 500px
 }
 
 .productName{
     font-weight: bold;
+    padding-top: 2rem;
+    font-size: 20px;
 }
 
 .lightContainer, .productContainer, .dataContainer, .nav_style a:hover{
@@ -38,10 +50,18 @@ body {
     color:rgb(1 50 31);
 }
 
-.darkContainer, .nav_style, .nav_style a{
+button, .darkContainer, .nav_style, .nav_style a{
     background-color: rgb(1 50 31);
     color:rgb(192 249 226);
     text-decoration: none;
+}
+
+button {
+    border: none;
+    padding: 15px 32px;
+    font-size: 16px;
+    font-family: Arial;
+    border-radius: 10px;
 }
 
 .nav_style a{

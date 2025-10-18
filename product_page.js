@@ -23,8 +23,6 @@ function getProductName(name, url) {
 }
 
 function getProductData(productId, dataJson){
-    newList = createTextElement("div", "shopContainer", "");
-    mainContent.appendChild(newList);
 
     // Read the json
     fetch(dataJson)
@@ -41,20 +39,7 @@ function getProductData(productId, dataJson){
 
         for (var content of data){
             if (content.id == productId){
-                // Each row has 3 columns
-                var columnCounter = 0;
-                var rowElement = document.createElement("div");
-                rowElement.className = "row";
-                newList.appendChild(rowElement);
-                //Create sub content on subtitle level
-                columnCounter = columnCounter + 1;
-                if (columnCounter == 4){
-                    var rowElement = document.createElement("div");
-                    rowElement.className = "row";
-                    newList.appendChild(rowElement);
-                    columnCounter = 0;
-                }
-                createProductView(content, rowElement);
+                updateProductTemplate(content);
             }
         }
         
@@ -66,46 +51,26 @@ function getProductData(productId, dataJson){
     });
 }
 
-function createProductView(productData, collectionElement){
-    // Create the product element to contain name, and image of the product.
-    const columnElement = document.createElement("div");
-    columnElement.className = "col-sm-4";
-    collectionElement.appendChild(columnElement);
+function updateProductTemplate(productData){
+    // Update title
+    document.title = productData.name;
 
-    const productElement = document.createElement("div");
-    productElement.className = "productContainer";
-    columnElement.appendChild(productElement);
-
-    // Add image of the product.
-    const linkElement = document.createElement("a");
-    linkElement.href = `product?productId=${productData.id}`
-    productElement.appendChild(linkElement);
+    // Update image
+    const parentImageElement = document.getElementById("image");
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
     imageElement.alt = productData.image;
-    linkElement.appendChild(imageElement);
+    parentImageElement.appendChild(imageElement);
 
-    // Add product name to it
-    sub = createTextElement("div", "productName", productData.name);
-    productElement.appendChild(sub);
+    // Update name
+    const nameElement = document.getElementById("name");
+    nameElement.innerHTML = productData.name;
 
-    // Show first 100 char of description and add "..." if the description is longer.
-    const descriptionElement = document.createElement("p");
-    descriptionElement.textContent = descriptionReview(productData.description);
-    productElement.appendChild(descriptionElement);
-}
+    // Update product description
+    const descriptionElement = document.getElementById("desc");
+    descriptionElement.innerHTML = productData.description;
 
-function descriptionReview(desc){
-    if (desc.length > 100){
-        return desc.substring(0,100).concat("...");
-    } else {
-        return desc;
-    }
-}
-
-function createTextElement(type, className, value){
-    const element = document.createElement(type); // Would like this to be a explanation element type
-    element.className = className;
-    element.textContent = value;
-    return element;
+    // Update price
+    const priceElement = document.getElementById("price");
+    priceElement.innerHTML = `${productData.price.toString()} ${productData.unit}`;
 }

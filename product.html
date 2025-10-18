@@ -10,7 +10,8 @@
         <!--Bootstrap-->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> <!--Flex-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> <!--Shopping cart-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -43,6 +44,26 @@
         <div class="bodyContent">
             <!--The things here-->
             <script src='product_page.js'></script>
+            <div class="shopContainer" id="productlist">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="productContainer" id="image">
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div>
+                            <div class="dataContainer">
+                                <div class="productName" id="name"></div>
+                                <p id="desc"></p>
+                            </div>
+                            <div class="dataContainer d-flex flex-row justify-content-between">
+                                <p id="price"></p>
+                                <button class="button glyphicon glyphicon-shopping-cart"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
