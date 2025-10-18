@@ -82,7 +82,7 @@ function createProductView(productData, collectionElement){
 
     // Shop row
     const shopRowElement = document.createElement("div");
-    shopRowElement.className = "shopRow";
+    shopRowElement.className = "d-flex flex-row justify-content-between";
     productElement.appendChild(shopRowElement);
 
     // Price tag
