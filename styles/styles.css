@@ -19,13 +19,6 @@ body {
     place-items: center;
 }
 
-.shopRow{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 2rem;
-}
-
 .darkContainer, .lightContainer, .productContainer, .dataContainer{
     border-radius: 10px;
     margin: 3rem;
