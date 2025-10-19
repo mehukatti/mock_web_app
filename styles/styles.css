@@ -13,12 +13,20 @@ body {
     margin-right: 0;
 }
 
+.textStyle {
+    font-size: 16px;
+    font-family: Arial;
+}
+
 .customHeading {
     display: block;
     font-size: 3em;
     padding-top: 2rem;
     padding-bottom: 2rem;
     font-weight: bold;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
 }
 
 .unitSelector {
@@ -69,12 +77,10 @@ button {
 }
 
 .nav_style a{
-    padding:3rem;
+    padding:1rem;
 }
 
 .nav_style {
-    float: left;
-    display: block;
     overflow: hidden;
     width:100%;
     padding: 1rem;
