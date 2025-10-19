@@ -64,7 +64,7 @@ function createProductView(productData, collectionElement){
 
     // Add image of the product with a link
     const linkElement = document.createElement("a");
-    linkElement.href = `product?productId=${productData.id}`
+    linkElement.href = `product.html?productId=${productData.id}`
     productElement.appendChild(linkElement);
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
