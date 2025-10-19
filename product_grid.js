@@ -80,6 +80,10 @@ function createProductView(productData, collectionElement){
     descriptionElement.textContent = descriptionReview(productData.description);
     productElement.appendChild(descriptionElement);
 
+    createShopRow(productElement, productData);
+}
+
+function createShopRow(productElement, productData){
     // Shop row
     const shopRowElement = document.createElement("div");
     shopRowElement.className = "d-flex flex-row justify-content-between align-items-center";
@@ -89,6 +93,15 @@ function createProductView(productData, collectionElement){
     const priceElement = document.createElement("div");
     priceElement.textContent = `${productData.price.toString()} ${productData.unit}`;
     shopRowElement.appendChild(priceElement);
+
+    // Unit selector
+    const inputElement = document.createElement("input");
+    inputElement.className = "unitSelector";
+    inputElement.type = "number";
+    inputElement.value = 1;
+    inputElement.min = 1;
+    inputElement.autocomplete = false;
+    shopRowElement.appendChild(inputElement);
 
     // Shopping cart button
     const cartButton = createTextElement("button", "button glyphicon glyphicon-shopping-cart", "");
