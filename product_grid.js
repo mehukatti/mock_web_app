@@ -100,6 +100,7 @@ function createShopRow(productElement, productData){
     inputElement.type = "number";
     inputElement.value = 1;
     inputElement.min = 1;
+    inputElement.step = 1;
     inputElement.autocomplete = false;
     shopRowElement.appendChild(inputElement);
 
