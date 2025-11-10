@@ -11,10 +11,10 @@ export function addProductShoppingCart(productId, units) {
     // Is the product in the cart already?
     if ( mockWebAppCart.hasOwnProperty(String(productId)) ) {
         // If the productId is in the mockWebAppCart, add to it
-        mockWebAppCart[productId] = mockWebAppCart[productId] + units;
+        mockWebAppCart[productId] = mockWebAppCart[productId] + parseInt(units);
     } else {
         // If the productId is not in the mockWebAppCart, add it
-        mockWebAppCart[productId] = units;
+        mockWebAppCart[productId] = parseInt(units);
     }
     
     localStorage.setItem(cartKeyName, JSON.stringify(mockWebAppCart));

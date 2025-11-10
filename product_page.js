@@ -74,9 +74,10 @@ function updateProductTemplate(productData){
     const priceElement = document.getElementById("price");
     priceElement.innerHTML = `${productData.price.toString()} ${productData.unit}`;
 
-    // Shopping cart button
+    // Add event listener to shopping cart button
+    const unitSelectorElement = document.getElementById("unitSelector")
     var cartButton = document.getElementById("addToCartButton");
     cartButton.addEventListener('click', ()=>{
-        addProductShoppingCart(productData.id, 1);
+        addProductShoppingCart(productData.id,unitSelectorElement.value);
     });
 }

@@ -62,7 +62,7 @@ function createProductView(productData, collectionElement){
 
     // Add image of the product with a link
     const linkElement = document.createElement("a");
-    linkElement.href = `product.html?productId=${productData.id}`
+    linkElement.href = `product.html?productId=${productData.id}`;
     productElement.appendChild(linkElement);
     const imageElement = document.createElement("img");
     imageElement.src = `products/images/${productData.image}`;
@@ -108,7 +108,7 @@ function createShopRow(productElement, productData){
     const cartButton = createTextElement("button", "button glyphicon glyphicon-shopping-cart", "");
     cartButton.alt = "Add to cart";
     cartButton.addEventListener('click', ()=>{
-		addProductShoppingCart(productData.id, 1);
+		addProductShoppingCart(productData.id, inputElement.value);
 	});
     shopRowElement.appendChild(cartButton);
 }
