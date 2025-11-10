@@ -49,7 +49,7 @@ function getProductData(productId, dataJson){
     });
 }
 
-import { addProductShoppingCart } from './shoppingCart.js';
+import { addProductShoppingCart } from './shoppingCartMemory.js';
 
 function updateProductTemplate(productData){
     // Update title

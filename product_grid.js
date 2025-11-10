@@ -81,7 +81,7 @@ function createProductView(productData, collectionElement){
     createShopRow(productElement, productData);
 }
 
-import { addProductShoppingCart } from './shoppingCart.js';
+import { addProductShoppingCart } from './shoppingCartMemory.js';
 
 function createShopRow(productElement, productData){
     // Shop row
