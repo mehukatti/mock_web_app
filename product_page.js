@@ -1,5 +1,3 @@
-var document;
-
 //Create content from one json
 const mainContent = document.createElement("div");
 mainContent.className = "shopContainer";
@@ -51,6 +49,8 @@ function getProductData(productId, dataJson){
     });
 }
 
+import { addProductShoppingCart } from './shoppingCart.js';
+
 function updateProductTemplate(productData){
     // Update title
     document.title = productData.name;
@@ -73,4 +73,10 @@ function updateProductTemplate(productData){
     // Update price
     const priceElement = document.getElementById("price");
     priceElement.innerHTML = `${productData.price.toString()} ${productData.unit}`;
+
+    // Shopping cart button
+    var cartButton = document.getElementById("addToCartButton");
+    cartButton.addEventListener('click', ()=>{
+        addProductShoppingCart(productData.id, 1);
+    });
 }

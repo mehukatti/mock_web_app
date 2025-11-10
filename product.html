@@ -49,7 +49,7 @@
 
         <div class="bodyContent">
             <!--The things here-->
-            <script src='product_page.js'></script>
+            <script type="module" src="product_page.js"></script>
             <div class="shopContainer" id="productlist">
                 <div class="row">
                     <div class="col-sm-4">
@@ -64,7 +64,7 @@
                             <div class="dataContainer d-flex flex-row justify-content-between align-items-center">
                                 <div id="price" class="mr-auto"></div>
                                 <input class="unitSelector mr-3 ml-3" type="number" min="1" step="1" autocomplete="false" value="1">
-                                <button class="button glyphicon glyphicon-shopping-cart"></button>
+                                <button id="addToCartButton" class="button glyphicon glyphicon-shopping-cart"></button>
                             </div>
                         </div>
                     </div>

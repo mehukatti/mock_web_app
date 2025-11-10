@@ -1,5 +1,3 @@
-var document;
-
 //Create content from one json
 const mainContent = document.createElement("div");
 mainContent.className = "shopContainer";
@@ -72,7 +70,7 @@ function createProductView(productData, collectionElement){
     linkElement.appendChild(imageElement);
 
     // Add product name to it
-    sub = createTextElement("div", "productName", productData.name);
+    const sub = createTextElement("div", "productName", productData.name);
     productElement.appendChild(sub);
 
     // Show first 100 char of description and add "..." if the description is longer.
@@ -82,6 +80,8 @@ function createProductView(productData, collectionElement){
 
     createShopRow(productElement, productData);
 }
+
+import { addProductShoppingCart } from './shoppingCart.js';
 
 function createShopRow(productElement, productData){
     // Shop row
@@ -107,6 +107,9 @@ function createShopRow(productElement, productData){
     // Shopping cart button
     const cartButton = createTextElement("button", "button glyphicon glyphicon-shopping-cart", "");
     cartButton.alt = "Add to cart";
+    cartButton.addEventListener('click', ()=>{
+		addProductShoppingCart(productData.id, 1);
+	});
     shopRowElement.appendChild(cartButton);
 }
 
@@ -119,7 +122,7 @@ function descriptionReview(desc){
 }
 
 function createTextElement(type, className, value){
-    const element = document.createElement(type); // Would like this to be a explanation element type
+    var element = document.createElement(type); // Would like this to be a explanation element type
     element.className = className;
     element.textContent = value;
     return element;
