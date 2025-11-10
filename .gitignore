@@ -6,6 +6,8 @@
 !products/
 !products/**
 
+!scripts/
+
 !*.css
 !*.html
 !*.js
