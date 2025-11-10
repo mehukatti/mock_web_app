@@ -1,10 +1,5 @@
 //Create content from one json
-const mainContent = document.createElement("div");
-mainContent.className = "shopContainer";
-mainContent.id = `productlist`;
-//mainContent.textContent = "This appears"
-
-document.body.appendChild(mainContent);
+const mainContent = document.getElementById("productlist");
 
 const productId = getProductName('productId');
 
