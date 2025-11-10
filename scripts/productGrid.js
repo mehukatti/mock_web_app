@@ -1,8 +1,9 @@
+import { addProductShoppingCart } from './shoppingCartMemory.js';
+import { createTextElement } from './commonFunctions.js';
+
 //Create content from one json
-const mainContent = document.createElement("div");
-mainContent.className = "shopContainer";
+const mainContent = createTextElement("div", "shopContainer", "");
 mainContent.id = `productlist`;
-//mainContent.textContent = "This appears"
 
 document.body.appendChild(mainContent);
 
@@ -81,8 +82,6 @@ function createProductView(productData, collectionElement){
     createShopRow(productElement, productData);
 }
 
-import { addProductShoppingCart } from './shoppingCartMemory.js';
-
 function createShopRow(productElement, productData){
     // Shop row
     const shopRowElement = document.createElement("div");
@@ -119,11 +118,4 @@ function descriptionReview(desc){
     } else {
         return desc;
     }
-}
-
-function createTextElement(type, className, value){
-    var element = document.createElement(type); // Would like this to be a explanation element type
-    element.className = className;
-    element.textContent = value;
-    return element;
 }
