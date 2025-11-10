@@ -8,6 +8,8 @@
 
 !scripts/
 
+!docs/
+
 !*.css
 !*.html
 !*.js
