@@ -7,6 +7,9 @@ mainContent.id = `productlist`;
 
 document.body.appendChild(mainContent);
 
+const tableContainerElement = createTextElement("div", "tableContainer");
+mainContent.appendChild(tableContainerElement);
+
 populateShoppingCartTable();
 
 function populateShoppingCartTable() {
@@ -14,16 +17,9 @@ function populateShoppingCartTable() {
 
     // If shopping cart is empty, tell the user that
     if (jQuery.isEmptyObject(cartContents)) {
-        const rowElement = createTextElement("div", "row", "");
-        mainContent.appendChild(rowElement);
-
-        const columnElement = createTextElement("div", "col-md-4", );
-        rowElement.appendChild(columnElement);
-
         // Product container to get the desired styling
-        
         const productElement = createTextElement("div", "productContainer", "Your shopping cart is empty.");
-        columnElement.appendChild(productElement);
+        tableContainerElement.appendChild(productElement);
     } else {
         createShoppingCartTable(cartContents);
     }
@@ -32,7 +28,7 @@ function populateShoppingCartTable() {
 function createShoppingCartTable(cartContents) {
     // The second "table" is bootstrap table
     const tableElement = createTextElement("table", "table");
-    mainContent.appendChild(tableElement);
+    tableContainerElement.appendChild(tableElement);
 
     // Create title row:
     const tableHeader = document.createElement("thead");
@@ -68,19 +64,10 @@ async function createCartRow(productId, units) {
     const productData = await fetchProductData(productId);
     
 
-    const nameElement = document.createElement("th");
-    nameElement.textContent = productData.name;
-
-    const priceElement = document.createElement("th");
-    priceElement.textContent = productData.price;
-    const unitElement = document.createElement("th");
-    unitElement.textContent = units;
-
-    tableRow.append(
-        nameElement,
-        priceElement,
-        unitElement
-    );
+    for (var value of [productData.name, productData.price, units]){
+        var columnElement = createTextElement("th", "w-25", value);
+        tableRow.appendChild(columnElement);
+    }
 
     return tableRow;
 }

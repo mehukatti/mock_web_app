@@ -2,7 +2,11 @@
     background-color: transparent;
 }
 
-table {
+.tableContainer {
     margin: 3rem;
     padding: 3rem;
+}
+
+table {
+    margin: 3rem;
 }
