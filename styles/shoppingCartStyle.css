@@ -5,10 +5,13 @@
 .tableContainer {
     margin: 3rem;
     padding: 3rem;
+    max-width: 1020px;
+    margin: 3rem auto;
 }
 
 table {
-    margin: 3rem;
+    width: 100%; /* make the table fill the container */
+    margin: 0 auto; /* ensure inner table stays centered */
 }
 
 .miniImageContainer {
