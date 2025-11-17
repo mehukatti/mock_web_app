@@ -69,7 +69,7 @@ async function createCartRow(productId, units) {
     tableRow.appendChild(columnElement);
     createImageLink(columnElement, productData);
 
-    for (var value of [productData.name, productData.price, units]){
+    for (var value of [productData.name, `${productData.price.toString()} ${productData.unit}`, `${units.toString()} kg`]){
         var columnElement = createTextElement("th", "w-25", value);
         tableRow.appendChild(columnElement);
     }
