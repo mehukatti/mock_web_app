@@ -35,7 +35,7 @@ function createShoppingCartTable(cartContents) {
     tableElement.appendChild(tableHeader);
     const titleRow = document.createElement("tr");
 
-    const titles = ["Image", "Name", "Price", "Units", "Total"];
+    const titles = ["Image", "Name", "Price", "Quantity", "Total"];
     for (var title of titles) {
         var columnElement = createTextElement("th", "", title);
         titleRow.appendChild(columnElement);
