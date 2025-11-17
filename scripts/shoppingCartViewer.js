@@ -35,7 +35,7 @@ function createShoppingCartTable(cartContents) {
     tableElement.appendChild(tableHeader);
     const titleRow = document.createElement("tr");
 
-    const titles = ["Image", "Name", "Price", "Units"];
+    const titles = ["Image", "Name", "Price", "Units", "Total"];
     for (var title of titles) {
         var columnElement = createTextElement("th", "", title);
         titleRow.appendChild(columnElement);
@@ -65,12 +65,12 @@ async function createCartRow(productId, units) {
 
     // Create mini image and link
     // Container for the link and image
-    var columnElement = createTextElement("th", "w-25", value);
+    var columnElement = createTextElement("th", "", value);
     tableRow.appendChild(columnElement);
     createImageLink(columnElement, productData);
 
-    for (var value of [productData.name, `${productData.price.toString()} ${productData.unit}`, `${units.toString()} kg`]){
-        var columnElement = createTextElement("th", "w-25", value);
+    for (var value of [productData.name, `${productData.price.toString()} ${productData.unit}`, `${units.toString()} kg`, `${(units*productData.price).toString()} €`]){
+        var columnElement = createTextElement("th", "", value);
         tableRow.appendChild(columnElement);
     }
 
