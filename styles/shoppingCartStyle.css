@@ -10,3 +10,7 @@
 table {
     margin: 3rem;
 }
+
+.miniImageContainer {
+    max-width: 100px;
+}
