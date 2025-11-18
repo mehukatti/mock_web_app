@@ -17,3 +17,8 @@ table {
 .miniImageContainer {
     max-width: 100px;
 }
+
+/* To somehow separate the image and the product name from each other */
+a.normalLink {
+    margin-left: 1em;
+}
