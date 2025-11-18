@@ -1,5 +1,5 @@
 import { getCartContent } from './shoppingCartMemory.js';
-import { createTextElement } from './commonFunctions.js';
+import { createTextElement, createUnitSelector } from './commonFunctions.js';
 
 //Create content from one json
 const mainContent = createTextElement("div", "shopContainer", "");
@@ -72,10 +72,19 @@ async function createCartRow(productId, units) {
     tableRow.appendChild(columnElement);
     createImageLink(columnElement, productData);
 
-    for (var value of [productData.name, `${productData.price.toString()} ${productData.unit}`, `${units.toString()} kg`, `${(units*productData.price).toString()} €`]){
+    // Image and 
+    for (var value of [`${productData.price.toString()} ${productData.unit}`]){
         var columnElement = createTextElement("th", "", value);
         tableRow.appendChild(columnElement);
     }
+
+    // Unit selector
+    const inputElement = createUnitSelector(productData.id);
+    tableRow.appendChild(inputElement);
+
+    // Total cost
+    var columnElement = createTextElement("th", "", `${(units*productData.price).toString()} €`);
+    tableRow.appendChild(columnElement);
 
     return tableRow;
 }
