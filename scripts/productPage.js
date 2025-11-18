@@ -1,3 +1,5 @@
+import { createTextElement, createUnitSelector } from './commonFunctions.js';
+
 //Create content from one json
 const mainContent = document.getElementById("productlist");
 
@@ -44,8 +46,6 @@ function getProductData(productId, dataJson){
     });
 }
 
-import { addProductShoppingCart } from './shoppingCartMemory.js';
-
 function updateProductTemplate(productData){
     // Update title
     document.title = productData.name;
@@ -70,9 +70,8 @@ function updateProductTemplate(productData){
     priceElement.innerHTML = `${productData.price.toString()} ${productData.unit}`;
 
     // Add event listener to shopping cart button
-    const unitSelectorElement = document.getElementById("unitSelector")
-    var cartButton = document.getElementById("addToCartButton");
-    cartButton.addEventListener('click', ()=>{
-        addProductShoppingCart(productData.id,unitSelectorElement.value);
-    });
+    // Unit selector
+    const shopRow = document.getElementById("shopRow")
+    const inputElement = createUnitSelector(productData.id);
+    shopRow.appendChild(inputElement);
 }

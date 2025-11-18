@@ -1,4 +1,3 @@
-import { addProductShoppingCart } from './shoppingCartMemory.js';
 import { createTextElement, createUnitSelector } from './commonFunctions.js';
 
 //Create content from one json
@@ -95,16 +94,8 @@ function createShopRow(productElement, productData){
     shopRowElement.appendChild(priceElement);
 
     // Unit selector
-    const inputElement = createUnitSelector();
+    const inputElement = createUnitSelector(productData.id);
     shopRowElement.appendChild(inputElement);
-
-    // Shopping cart button
-    const cartButton = createTextElement("button", "button glyphicon glyphicon-shopping-cart", "");
-    cartButton.alt = "Add to cart";
-    cartButton.addEventListener('click', ()=>{
-		addProductShoppingCart(productData.id, inputElement.value);
-	});
-    shopRowElement.appendChild(cartButton);
 }
 
 function descriptionReview(desc){
