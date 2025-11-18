@@ -1,5 +1,5 @@
 import { addProductShoppingCart } from './shoppingCartMemory.js';
-import { createTextElement } from './commonFunctions.js';
+import { createTextElement, createUnitSelector } from './commonFunctions.js';
 
 //Create content from one json
 const mainContent = createTextElement("div", "shopContainer", "");
@@ -45,6 +45,7 @@ function readJSON(dataJson){
         const p = document.createElement("p");
         p.appendChild(document.createTextNode(`Error: ${error.message}`));
         document.body.insertBefore(p, mainContent);
+        console.log(error);
     });
 }
 
@@ -94,13 +95,7 @@ function createShopRow(productElement, productData){
     shopRowElement.appendChild(priceElement);
 
     // Unit selector
-    const inputElement = document.createElement("input");
-    inputElement.className = "unitSelector";
-    inputElement.type = "number";
-    inputElement.value = 1;
-    inputElement.min = 1;
-    inputElement.step = 1;
-    inputElement.autocomplete = false;
+    const inputElement = createUnitSelector();
     shopRowElement.appendChild(inputElement);
 
     // Shopping cart button
