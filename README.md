@@ -4,7 +4,8 @@ See the "app": https://mehukatti.github.io/mock_web_app/
 ## Purpose
 This web app was intended for learning and personal CV building purposes.
 
-Target was to learn how to create web apps amd demonstrate test automation.
+Target was to learn how to create web apps and demonstrate test automation.
+* Test automation suite can be found from the main branch of repository https://github.com/mehukatti/Test_automation-Eshop-mock
 
 ## Properties
 * No backend, only front
@@ -12,3 +13,4 @@ Target was to learn how to create web apps amd demonstrate test automation.
 * HTML, CSS and javascript
 * Bootstrap
 * Shopping cart uses localStorage of browser, so no cookies. Cart content forgotten when browser is closed
+
