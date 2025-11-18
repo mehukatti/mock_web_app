@@ -111,12 +111,9 @@ function createImageLink(columnElement, productData) {
     linkElementImage.appendChild(imageElement);
 
     // Name of the product too as a link
-    const linkElementName = document.createElement("a");
+    const linkElementName = createTextElement("a", "normalLink", productData.name)
     linkElementName.href = `product.html?productId=${productData.id}`;
-    linkElementName.innerHTML = productData.name
     columnElement.appendChild(linkElementName);
-
-
 }
 
 async function fetchProductData(productId) {
