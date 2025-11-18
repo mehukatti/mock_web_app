@@ -68,22 +68,24 @@ async function createCartRow(productId, units) {
 
     // Create mini image and link
     // Container for the link and image
-    var columnElement = createTextElement("th", "", value);
+    var columnElement = createTextElement("th", "align-middle", value);
     tableRow.appendChild(columnElement);
     createImageLink(columnElement, productData);
 
     // Image and 
     for (var value of [`${productData.price.toString()} ${productData.unit}`]){
-        var columnElement = createTextElement("th", "", value);
+        var columnElement = createTextElement("th", "align-middle", value);
         tableRow.appendChild(columnElement);
     }
 
     // Unit selector
+    var columnElement = createTextElement("th", "align-middle", "");
+    tableRow.appendChild(columnElement);
     const inputElement = createUnitSelector(productData.id);
-    tableRow.appendChild(inputElement);
+    columnElement.appendChild(inputElement);
 
     // Total cost
-    var columnElement = createTextElement("th", "", `${(units*productData.price).toString()} €`);
+    var columnElement = createTextElement("th", "align-middle", `${(units*productData.price).toString()} €`);
     tableRow.appendChild(columnElement);
 
     return tableRow;
