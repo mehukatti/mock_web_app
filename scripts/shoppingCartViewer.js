@@ -46,6 +46,9 @@ function createShoppingCartTable(cartContents) {
     const tableBody = document.createElement("tbody");
 
     for (const [productId, units]  of Object.entries(cartContents)) {
+        if ( units == 0 ) {
+            continue;
+        }
 
         createCartRow(parseInt(productId), parseInt(units))
         .then((tableRow) => {
