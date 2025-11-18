@@ -13,4 +13,5 @@ Target was to learn how to create web apps and demonstrate test automation.
 * HTML, CSS and javascript
 * Bootstrap
 * Shopping cart uses localStorage of browser, so no cookies. Cart content forgotten when browser is closed
+* Hosted in Github Pages.
 
