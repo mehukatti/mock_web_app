@@ -13,6 +13,7 @@ export function createUnitSelector() {
     inputElement.value = 1;
     inputElement.min = 1;
     inputElement.step = 1;
+    inputElement.max = 999;
     inputElement.autocomplete = false;
     return inputElement;
 }
