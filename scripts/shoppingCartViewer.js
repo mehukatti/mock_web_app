@@ -35,7 +35,7 @@ function createShoppingCartTable(cartContents) {
     tableElement.appendChild(tableHeader);
     const titleRow = document.createElement("tr");
 
-    const titles = ["Image", "Name", "Price", "Quantity", "Total"];
+    const titles = ["Product", "Price", "Quantity", "Total"];
     for (var title of titles) {
         var columnElement = createTextElement("th", "", title);
         titleRow.appendChild(columnElement);
@@ -94,18 +94,27 @@ function createImageLink(columnElement, productData) {
     <a href="product.html?productId=3">
         <img class="miniImageContainer" src="products/images/orange.png" alt="orange.png">
     </a>
+    <a href="product.html?productId=1">Apple</a>
     */
 
-    // a href element
-    const linkElement = document.createElement("a");
-    linkElement.href = `product.html?productId=${productData.id}`;
-    columnElement.appendChild(linkElement);
-
     // Image element inside a href element
+    const linkElementImage = document.createElement("a");
+    linkElementImage.href = `product.html?productId=${productData.id}`;
+    columnElement.appendChild(linkElementImage);
+
+    
     const imageElement = createTextElement("img", "miniImageContainer", "");
     imageElement.src = `products/images/${productData.image}`;
     imageElement.alt = productData.image;
-    linkElement.appendChild(imageElement);
+    linkElementImage.appendChild(imageElement);
+
+    // Name of the product too as a link
+    const linkElementName = document.createElement("a");
+    linkElementName.href = `product.html?productId=${productData.id}`;
+    linkElementName.innerHTML = productData.name
+    columnElement.appendChild(linkElementName);
+
+
 }
 
 async function fetchProductData(productId) {
