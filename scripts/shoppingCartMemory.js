@@ -30,6 +30,11 @@ export function updateProductQuantityInShoppingCart(productId, units) {
     }
     
     localStorage.setItem(cartKeyName, JSON.stringify(mockWebAppCart));
+    
+    // Notify listeners that the cart changed
+    window.dispatchEvent(new CustomEvent("cartUpdated", {
+        detail: { productId, newQuantity: mockWebAppCart[productId] }
+    }));
 }
 
 export function getCartContent() {
