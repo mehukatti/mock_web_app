@@ -86,12 +86,21 @@ async function createCartRow(productId, units) {
     // Total cost
     var rowTotalPriceElement = createTextElement("th", "align-middle", `${(units*productData.price).toString()} €`);
     tableRow.appendChild(rowTotalPriceElement);
-    // Add event listener to update the price in case the quantity of this product was changed.
+
+    /* Add event listener to
+    update the price in case the quantity of this product was changed.
+    update the whole page if the new quantity is zero.
+    */
     window.addEventListener("cartUpdated", (event) => {
         if (event.detail.productId === productId) {
             const updatedUnits = getProductQuantity(productId);
-            rowTotalPriceElement.textContent =
-                `${(updatedUnits * productData.price).toString()} €`;
+            if ( updatedUnits == 0 ) {
+                // If the new quantity is zero, reload the whole page to remove null rows.
+                location.reload();
+            } else {
+                // Otherwise update the price
+                rowTotalPriceElement.textContent = `${(updatedUnits * productData.price).toString()} €`;
+            }
         }
     });
 
