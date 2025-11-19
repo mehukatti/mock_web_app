@@ -51,10 +51,13 @@ function createShoppingCartTable(cartContents) {
 
         createCartRow(parseInt(productId), parseInt(units))
         .then((tableRow) => {
-            tableBody.appendChild(tableRow);;
+            tableBody.insertBefore(tableRow, tableBody.childNodes[0]);
         })
         .catch(console.error)
     }
+    // Total row, but add to document only lastly
+    const totalRow = createTotalRow();
+    tableBody.appendChild(totalRow);
     tableElement.appendChild(tableBody);
 }
 
@@ -86,16 +89,80 @@ async function createCartRow(productId, units) {
     // Total cost
     var rowTotalPriceElement = createTextElement("th", "align-middle", `${(units*productData.price).toString()} €`);
     tableRow.appendChild(rowTotalPriceElement);
-    // Add event listener to update the price in case the quantity of this product was changed.
+
+    /* Add event listener to
+    update the price in case the quantity of this product was changed.
+    update the whole page if the new quantity is zero.
+    update the total row at the same time
+    */
     window.addEventListener("cartUpdated", (event) => {
         if (event.detail.productId === productId) {
             const updatedUnits = getProductQuantity(productId);
-            rowTotalPriceElement.textContent =
-                `${(updatedUnits * productData.price).toString()} €`;
+            if ( updatedUnits == 0 ) {
+                // If the new quantity is zero, reload the whole page to remove null rows.
+                location.reload();
+            } else {
+                // Otherwise update the price
+                rowTotalPriceElement.textContent = `${(updatedUnits * productData.price).toString()} €`;
+                // Update the total price too
+                var totalPriceElement = document.getElementById("totalPrice");
+                totalCartPrice()
+                .then((totalPrice) => {
+                    totalPriceElement.textContent = `${totalPrice.toString()} €`;
+                })
+                .catch(console.error)
+            }
         }
     });
 
     return tableRow;
+}
+
+function createTotalRow() {
+    /* Create total row, where there is only text "Total" and the total sum.
+    */
+    var cartContents = getCartContent();
+    const totalRow = document.createElement("tr");
+    
+    // Gotta create empty columns to match the column spacing
+    for (var title of ["", "", "Total"]) {
+        var columnElement = createTextElement("th", "align-middle", title);
+        totalRow.appendChild(columnElement);
+    }
+    var totalPriceElement = createTextElement("th", "align-middle", "");
+    // Calculate the total price
+    totalCartPrice()
+    .then((totalPrice) => {
+        totalPriceElement.textContent = `${totalPrice.toString()} €`;
+        totalPriceElement.id = "totalPrice";
+        totalRow.appendChild(totalPriceElement);
+    })
+    .catch(console.error)
+    return totalRow
+}
+
+async function totalCartPrice() {
+    var cartContents = getCartContent();
+    var total = 0;
+
+    // Iterate cart
+    for (const [productId, units]  of Object.entries(cartContents)) {
+        if ( units == 0 ) {
+            continue;
+        }
+        const productData = await fetchProductData(productId);
+        total = total + (productData.price * units);
+    }
+    return total;
+}
+
+async function fetchProductData(productId) {
+    const response = await fetch("products/products.json");
+    if (!response.ok) {
+        throw new Error(`readJSON Unable to fetch ${dataJson}. Status = ${response.status}`);
+    }
+    const data = await response.json();
+    return data.find(p => parseInt(p.id) === parseInt(productId));
 }
 
 function createImageLink(columnElement, productData) {
@@ -121,13 +188,4 @@ function createImageLink(columnElement, productData) {
     const linkElementName = createTextElement("a", "normalLink", productData.name)
     linkElementName.href = `product.html?productId=${productData.id}`;
     columnElement.appendChild(linkElementName);
-}
-
-async function fetchProductData(productId) {
-    const response = await fetch("products/products.json");
-    if (!response.ok) {
-        throw new Error(`readJSON Unable to fetch ${dataJson}. Status = ${response.status}`);
-    }
-    const data = await response.json();
-    return data.find(p => parseInt(p.id) === parseInt(productId));
 }

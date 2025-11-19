@@ -33,7 +33,7 @@ export function updateProductQuantityInShoppingCart(productId, units) {
     
     // Notify listeners that the cart changed
     window.dispatchEvent(new CustomEvent("cartUpdated", {
-        detail: { productId, newQuantity: mockWebAppCart[productId] }
+        detail: { productId }
     }));
 }
 
