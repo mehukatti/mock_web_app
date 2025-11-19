@@ -22,3 +22,7 @@ table {
 a.normalLink {
     margin-left: 1em;
 }
+
+.colorTheme {
+    color:rgb(1 50 31);
+}

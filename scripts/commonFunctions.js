@@ -37,7 +37,7 @@ export function createUnitSelector(productId) {
     inputElement.max = 999;
     inputElement.autocomplete = false;
 
-    inputElement.addEventListener('input', function (evt) {
+    inputElement.addEventListener('change', function (evt) {
         updateProductQuantityInShoppingCart(productId, inputElement.value - getProductQuantity(productId));
     });
 
