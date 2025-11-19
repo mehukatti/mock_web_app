@@ -51,10 +51,13 @@ function createShoppingCartTable(cartContents) {
 
         createCartRow(parseInt(productId), parseInt(units))
         .then((tableRow) => {
-            tableBody.appendChild(tableRow);;
+            tableBody.insertBefore(tableRow, tableBody.childNodes[0]);
         })
         .catch(console.error)
     }
+    // Total row, but add to document only lastly
+    const totalRow = createTotalRow(cartContents);
+    tableBody.appendChild(totalRow);
     tableElement.appendChild(tableBody);
 }
 
@@ -107,6 +110,48 @@ async function createCartRow(productId, units) {
     return tableRow;
 }
 
+function createTotalRow(cartContents) {
+    const totalRow = document.createElement("tr");
+    
+    // Gotta create empty columns to match the column spacing
+    const titles = ["", "", "Total"];
+    for (var title of titles) {
+        var columnElement = createTextElement("th", "align-middle", title);
+        totalRow.appendChild(columnElement);
+    }
+    // Calculate the total price
+    totalCartPrice(cartContents)
+    .then((totalPrice) => {
+        var columnElement = createTextElement("th", "align-middle", `${totalPrice.toString()} €`);
+        totalRow.appendChild(columnElement);
+    })
+    .catch(console.error)
+    return totalRow
+}
+
+async function totalCartPrice(cartContents) {
+    var total = 0;
+
+    // Iterate cart
+    for (const [productId, units]  of Object.entries(cartContents)) {
+        if ( units == 0 ) {
+            continue;
+        }
+        const productData = await fetchProductData(productId);
+        total = total + (productData.price * units);
+    }
+    return total;
+}
+
+async function fetchProductData(productId) {
+    const response = await fetch("products/products.json");
+    if (!response.ok) {
+        throw new Error(`readJSON Unable to fetch ${dataJson}. Status = ${response.status}`);
+    }
+    const data = await response.json();
+    return data.find(p => parseInt(p.id) === parseInt(productId));
+}
+
 function createImageLink(columnElement, productData) {
     /* Create Link to the product with image of the product inside the given columnElement.
     <a href="product.html?productId=3">
@@ -130,13 +175,4 @@ function createImageLink(columnElement, productData) {
     const linkElementName = createTextElement("a", "normalLink", productData.name)
     linkElementName.href = `product.html?productId=${productData.id}`;
     columnElement.appendChild(linkElementName);
-}
-
-async function fetchProductData(productId) {
-    const response = await fetch("products/products.json");
-    if (!response.ok) {
-        throw new Error(`readJSON Unable to fetch ${dataJson}. Status = ${response.status}`);
-    }
-    const data = await response.json();
-    return data.find(p => parseInt(p.id) === parseInt(productId));
 }
