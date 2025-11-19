@@ -56,7 +56,7 @@ function createShoppingCartTable(cartContents) {
         .catch(console.error)
     }
     // Total row, but add to document only lastly
-    const totalRow = createTotalRow(cartContents);
+    const totalRow = createTotalRow();
     tableBody.appendChild(totalRow);
     tableElement.appendChild(tableBody);
 }
@@ -93,6 +93,7 @@ async function createCartRow(productId, units) {
     /* Add event listener to
     update the price in case the quantity of this product was changed.
     update the whole page if the new quantity is zero.
+    update the total row at the same time
     */
     window.addEventListener("cartUpdated", (event) => {
         if (event.detail.productId === productId) {
@@ -103,6 +104,13 @@ async function createCartRow(productId, units) {
             } else {
                 // Otherwise update the price
                 rowTotalPriceElement.textContent = `${(updatedUnits * productData.price).toString()} €`;
+                // Update the total price too
+                var totalPriceElement = document.getElementById("totalPrice");
+                totalCartPrice()
+                .then((totalPrice) => {
+                    totalPriceElement.textContent = `${totalPrice.toString()} €`;
+                })
+                .catch(console.error)
             }
         }
     });
@@ -110,26 +118,31 @@ async function createCartRow(productId, units) {
     return tableRow;
 }
 
-function createTotalRow(cartContents) {
+function createTotalRow() {
+    /* Create total row, where there is only text "Total" and the total sum.
+    */
+    var cartContents = getCartContent();
     const totalRow = document.createElement("tr");
     
     // Gotta create empty columns to match the column spacing
-    const titles = ["", "", "Total"];
-    for (var title of titles) {
+    for (var title of ["", "", "Total"]) {
         var columnElement = createTextElement("th", "align-middle", title);
         totalRow.appendChild(columnElement);
     }
+    var totalPriceElement = createTextElement("th", "align-middle", "");
     // Calculate the total price
-    totalCartPrice(cartContents)
+    totalCartPrice()
     .then((totalPrice) => {
-        var columnElement = createTextElement("th", "align-middle", `${totalPrice.toString()} €`);
-        totalRow.appendChild(columnElement);
+        totalPriceElement.textContent = `${totalPrice.toString()} €`;
+        totalPriceElement.id = "totalPrice";
+        totalRow.appendChild(totalPriceElement);
     })
     .catch(console.error)
     return totalRow
 }
 
-async function totalCartPrice(cartContents) {
+async function totalCartPrice() {
+    var cartContents = getCartContent();
     var total = 0;
 
     // Iterate cart
