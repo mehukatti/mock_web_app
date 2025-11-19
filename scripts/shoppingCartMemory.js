@@ -38,6 +38,26 @@ export function getCartContent() {
     return mockWebAppCart;
 }
 
+export function isCartEmpty() {
+    /* Unable to use localStorage.setItem() to replace existing json with one that has one key deleted.
+    Therefore, there may be left some keys with zero quantities
+    */
+    var mockWebAppCart = getCartContent();
+    if (jQuery.isEmptyObject(mockWebAppCart)) {
+        // There is no items in localStorage
+        return true;
+    }
+
+    // Iterate cart to see if there is any non zero product
+    for (const [productId, units]  of Object.entries(mockWebAppCart)) {
+        if ( units > 0 ) {
+            return false;
+        }
+    }
+    // If all were zero, cart is empty.
+    return true;
+}
+
 export function getProductQuantity(productId) {
     /* Return the quantity of the product in the cart
     If the product is not in the cart, return zero

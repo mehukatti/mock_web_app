@@ -1,4 +1,4 @@
-import { getCartContent } from './shoppingCartMemory.js';
+import { getCartContent, isCartEmpty } from './shoppingCartMemory.js';
 import { createTextElement, createUnitSelector } from './commonFunctions.js';
 
 //Create content from one json
@@ -13,14 +13,13 @@ mainContent.appendChild(tableContainerElement);
 populateShoppingCartTable();
 
 function populateShoppingCartTable() {
-    var cartContents = getCartContent();
-
     // If shopping cart is empty, tell the user that
-    if (jQuery.isEmptyObject(cartContents)) {
+    if (isCartEmpty()) {
         // Product container to get the desired styling
         const productElement = createTextElement("div", "productContainer", "Your shopping cart is empty.");
         tableContainerElement.appendChild(productElement);
     } else {
+        var cartContents = getCartContent();
         createShoppingCartTable(cartContents);
     }
 }
