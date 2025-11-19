@@ -46,7 +46,7 @@ export function getProductQuantity(productId) {
     // Is the product in the cart already?
     if ( mockWebAppCart.hasOwnProperty(String(productId)) ) {
         // If the productId is in the mockWebAppCart, add to it
-        return mockWebAppCart[productId];
+        return parseInt(mockWebAppCart[productId]);
     } else {
         // If the productId is not in the mockWebAppCart, return
         return 0;
