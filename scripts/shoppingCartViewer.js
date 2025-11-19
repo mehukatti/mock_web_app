@@ -26,7 +26,7 @@ function populateShoppingCartTable() {
 
 function createShoppingCartTable(cartContents) {
     // The second "table" is bootstrap table
-    const tableElement = createTextElement("table", "table");
+    const tableElement = createTextElement("table", "table colorTheme");
     tableContainerElement.appendChild(tableElement);
 
     // Create title row:
