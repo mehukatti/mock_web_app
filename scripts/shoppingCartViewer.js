@@ -1,4 +1,4 @@
-import { getCartContent, isCartEmpty } from './shoppingCartMemory.js';
+import { getCartContent, isCartEmpty, getProductQuantity } from './shoppingCartMemory.js';
 import { createTextElement, createUnitSelector } from './commonFunctions.js';
 
 //Create content from one json
@@ -84,8 +84,16 @@ async function createCartRow(productId, units) {
     columnElement.appendChild(inputElement);
 
     // Total cost
-    var columnElement = createTextElement("th", "align-middle", `${(units*productData.price).toString()} €`);
-    tableRow.appendChild(columnElement);
+    var rowTotalPriceElement = createTextElement("th", "align-middle", `${(units*productData.price).toString()} €`);
+    tableRow.appendChild(rowTotalPriceElement);
+    // Add event listener to update the price in case the quantity of this product was changed.
+    window.addEventListener("cartUpdated", (event) => {
+        if (event.detail.productId === productId) {
+            const updatedUnits = getProductQuantity(productId);
+            rowTotalPriceElement.textContent =
+                `${(updatedUnits * productData.price).toString()} €`;
+        }
+    });
 
     return tableRow;
 }
