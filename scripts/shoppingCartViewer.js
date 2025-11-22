@@ -100,7 +100,8 @@ async function createCartRow(productId, units) {
             const updatedUnits = getProductQuantity(productId);
             if ( updatedUnits == 0 ) {
                 // If the new quantity is zero, reload the whole page to remove null rows.
-                location.reload();
+                //location.reload();
+                console.log("Somehow enable updating the table in WGA2.1 compliant way");
             } else {
                 // Otherwise update the price
                 rowTotalPriceElement.textContent = `${(updatedUnits * productData.price).toString()} €`;
