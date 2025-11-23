@@ -16,14 +16,24 @@ img{
 }
 
 /* Nav style*/
-.nav_style a{
-    padding:1rem;
+.container {
+    max-width: 1200px;
+}
+.navbar {
+    height: 4em;
 }
 
-.nav_style {
-    overflow: hidden;
-    width:100%;
-    padding: 1rem;
+.navbar-dark, .bg-dark {
+    background-color: rgb(1 50 31) !important;
+    color: rgb(192 249 226) !important;
+}
+
+nav a {
+    color: rgb(192 249 226);
+}
+
+nav a:hover {
+    color: white;
 }
 
 /* To avoid vertical scroll bar caused by bootstrap */
@@ -61,6 +71,12 @@ img{
 
 .productContainer{
     max-width: 500px
+}
+
+.shopContainer {
+    max-width: 1200px;
+    padding: 2rem;
+    margin: 0 auto;
 }
 
 .productName{
