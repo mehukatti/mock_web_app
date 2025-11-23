@@ -69,6 +69,16 @@ img{
     font-size: 20px;
 }
 
+/* On small screens, reduce the padding */
+@media (max-width: 900px) {
+    .shopContainer {
+        padding: 1rem; /* less padding on mobile */
+    }
+    .darkContainer, .lightContainer, .productContainer, .dataContainer{
+        margin: 1rem;
+    }
+}
+
 .unitSelector, .lightContainer, .productContainer, .dataContainer, .nav_style a:hover{
     background-color: rgb(192 249 226);
     color:rgb(1 50 31);
