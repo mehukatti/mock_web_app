@@ -37,6 +37,13 @@ export function createUnitSelector(productId) {
     inputElement.max = 999;
     inputElement.autocomplete = false;
 
+    // Accessibility requirement: Must be able to exit with enter or return key.
+    inputElement.addEventListener( 'keypress', function(event) {
+        if ( event.key === "Enter" ) {
+            inputElement.blur();
+        }
+    });
+    // Update the quantity in the cart based on new quantity.
     inputElement.addEventListener('change', function (evt) {
         updateProductQuantityInShoppingCart(productId, inputElement.value - getProductQuantity(productId));
     });
