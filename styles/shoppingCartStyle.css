@@ -3,10 +3,16 @@
 }
 
 .tableContainer {
-    margin: 3rem;
     padding: 3rem;
     max-width: 1020px;
     margin: 3rem auto;
+}
+
+/* On small screens, reduce the padding */
+@media (max-width: 900px) {
+    .tableContainer {
+        padding: 1rem; /* less padding on mobile */
+    }
 }
 
 table {
