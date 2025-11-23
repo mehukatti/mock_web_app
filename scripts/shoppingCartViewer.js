@@ -1,4 +1,4 @@
-import { getCartContent, isCartEmpty, getProductQuantity } from './shoppingCartMemory.js';
+import { getCartContent, isCartEmpty, getProductQuantity, clearCart } from './shoppingCartMemory.js';
 import { createTextElement, createUnitSelector } from './commonFunctions.js';
 
 //Create content from one json
@@ -20,13 +20,37 @@ function populateShoppingCartTable() {
         tableContainerElement.appendChild(productElement);
     } else {
         var cartContents = getCartContent();
+        createClearShoppingCartButton();
         createShoppingCartTable(cartContents);
     }
+}
+
+function createClearShoppingCartButton() {
+    /* Create a button that:
+    1. Sets all item quantities in cart to zero
+    2. Removes the table.
+    */
+
+    // The button:
+    const clearingButton = document.createElement("button");
+    clearingButton.className = "basicButtonStyle";
+    clearingButton.innerHTML = "Clear cart"
+    tableContainerElement.appendChild(clearingButton);
+
+    // Add event listener to clear cart contains and update the table
+    clearingButton.addEventListener('click', ()=>{
+        clearCart();
+        clearingButton.remove();
+        const cartElement = document.getElementById("cartTable");
+        cartElement.remove();
+        populateShoppingCartTable();
+    });
 }
 
 function createShoppingCartTable(cartContents) {
     // The second "table" is bootstrap table
     const tableElement = createTextElement("table", "table colorTheme");
+    tableElement.id = "cartTable";
     tableContainerElement.appendChild(tableElement);
 
     // Create title row:

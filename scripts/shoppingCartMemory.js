@@ -63,6 +63,12 @@ export function isCartEmpty() {
     return true;
 }
 
+export function clearCart() {
+    /* Remove the whole cart from the localStorage
+    */
+    localStorage.removeItem(cartKeyName);
+}
+
 export function getProductQuantity(productId) {
     /* Return the quantity of the product in the cart
     If the product is not in the cart, return zero
