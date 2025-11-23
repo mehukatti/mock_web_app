@@ -17,7 +17,7 @@ img{
 
 /* Nav style*/
 .container {
-    max-width: 1200px;
+    max-width: 1600px;
 }
 .navbar {
     height: 4em;
@@ -74,7 +74,7 @@ nav a:hover {
 }
 
 .shopContainer {
-    max-width: 1200px;
+    max-width: 1600px;
     padding: 2rem;
     margin: 0 auto;
 }
