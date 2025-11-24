@@ -62,7 +62,7 @@ function createProductView(productData, collectionElement){
     columnElement.appendChild(productElement);
 
     // Add image of the product with a link
-    const linkElement = document.createElement("a");
+    var linkElement = document.createElement("a");
     linkElement.href = `product.html?productId=${productData.id}`;
     productElement.appendChild(linkElement);
     const imageElement = document.createElement("img");
@@ -70,16 +70,24 @@ function createProductView(productData, collectionElement){
     imageElement.alt = productData.image;
     linkElement.appendChild(imageElement);
 
+    // Container for other product data
+    const productDataContainer = createTextElement("div", "productDataContainer", "");
+    productElement.appendChild(productDataContainer);
+
     // Add product name to it
-    const sub = createTextElement("div", "productName", productData.name);
-    productElement.appendChild(sub);
+    var linkElement = createTextElement("a", "normalLink", productData.name);
+    linkElement.href = `product.html?productId=${productData.id}`;
+    linkElement
+    const sub = createTextElement("div", "productName", "");
+    sub.appendChild(linkElement);
+    productDataContainer.appendChild(sub);
 
     // Show first 100 char of description and add "..." if the description is longer.
     const descriptionElement = document.createElement("p");
     descriptionElement.textContent = descriptionReview(productData.description);
-    productElement.appendChild(descriptionElement);
+    productDataContainer.appendChild(descriptionElement);
 
-    createShopRow(productElement, productData);
+    createShopRow(productDataContainer, productData);
 }
 
 function createShopRow(productElement, productData){

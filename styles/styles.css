@@ -88,9 +88,12 @@ nav a:hover {
     margin: 0 auto;
 }
 
+.productDataContainer {
+    padding-top: 2rem;
+}
+
 .productName{
     font-weight: bold;
-    padding-top: 2rem;
     font-size: 20px;
 }
 
