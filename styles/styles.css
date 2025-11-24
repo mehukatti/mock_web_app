@@ -9,6 +9,7 @@ body {
 
 a.normalLink {
     color:rgb(1 50 31);
+    text-decoration-line: underline;
 }
 
 img{
