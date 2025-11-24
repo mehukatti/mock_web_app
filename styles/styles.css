@@ -17,8 +17,16 @@ img{
 
 /* Nav style*/
 .container {
-    max-width: 1600px;
+    margin: 0px;
 }
+
+/* Increase size in big screens */
+@media (min-width: 1600px) {
+    .container {
+        min-width: 1600px;
+    }
+}
+
 .navbar {
     height: 4em;
 }
