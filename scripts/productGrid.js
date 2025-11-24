@@ -82,11 +82,6 @@ function createProductView(productData, collectionElement){
     sub.appendChild(linkElement);
     productDataContainer.appendChild(sub);
 
-    // Show first 100 char of description and add "..." if the description is longer.
-    const descriptionElement = document.createElement("p");
-    descriptionElement.textContent = descriptionReview(productData.description);
-    productDataContainer.appendChild(descriptionElement);
-
     createShopRow(productDataContainer, productData);
 }
 
@@ -104,12 +99,4 @@ function createShopRow(productElement, productData){
     // Unit selector
     const inputElement = createUnitSelector(productData.id);
     shopRowElement.appendChild(inputElement);
-}
-
-function descriptionReview(desc){
-    if (desc.length > 100){
-        return desc.substring(0,100).concat("...");
-    } else {
-        return desc;
-    }
 }
