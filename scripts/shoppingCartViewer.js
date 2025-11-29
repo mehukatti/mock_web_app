@@ -16,8 +16,8 @@ function populateShoppingCartTable() {
     // If shopping cart is empty, tell the user that
     if (isCartEmpty()) {
         // Product container to get the desired styling
-        const productElement = createTextElement("div", "productContainer", "Your shopping cart is empty.");
-        tableContainerElement.appendChild(productElement);
+        const cartEmptyElement = createTextElement("div", "noProductsInCartContainer", "Your shopping cart is empty.")
+        tableContainerElement.appendChild(cartEmptyElement);
     } else {
         var cartContents = getCartContent();
         createClearShoppingCartButton();

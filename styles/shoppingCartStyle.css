@@ -7,6 +7,10 @@
     margin: 0 auto;
 }
 
+.noProductsInCartContainer {
+    text-align: center;
+}
+
 /* On small screens, reduce the padding */
 @media (max-width: 900px) {
     .tableContainer {
