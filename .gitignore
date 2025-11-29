@@ -6,6 +6,9 @@
 !products/
 !products/**
 
+!logo/
+!logo/**
+
 !scripts/
 
 !docs/
