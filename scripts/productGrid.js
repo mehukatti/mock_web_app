@@ -40,12 +40,6 @@ function readJSON(dataJson){
         }
         
     })
-    .catch((error) => {
-        const p = document.createElement("p");
-        p.appendChild(document.createTextNode(`Error: ${error.message}`));
-        document.body.insertBefore(p, mainContent);
-        console.log(error);
-    });
 }
 
 function createProductView(productData, collectionElement){
@@ -97,6 +91,6 @@ function createShopRow(productElement, productData){
     shopRowElement.appendChild(priceElement);
 
     // Unit selector
-    const inputElement = createUnitSelector(productData.id);
+    const inputElement = createUnitSelector(productElement, productData.id);
     shopRowElement.appendChild(inputElement);
 }

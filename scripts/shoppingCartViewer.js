@@ -109,7 +109,7 @@ async function createCartRow(productId, units) {
     // Unit selector
     var columnElement = createTextElement("td", "align-middle columnSpacingStyle", "");
     tableRow.appendChild(columnElement);
-    const inputElement = createUnitSelector(productData.id);
+    const inputElement = createUnitSelector(columnElement, productData.id);
     columnElement.appendChild(inputElement);
 
     // Total cost

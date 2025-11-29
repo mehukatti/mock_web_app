@@ -172,3 +172,11 @@ input.unitSelector::-webkit-inner-spin-button {
 input.unitSelector[type=number] {
     -moz-appearance: textfield;
 }
+
+.toastStyle {
+    max-width:200px;
+    position: absolute;
+    font-family: Arial;
+    font-size: 18px;
+    line-height: 30px;
+}

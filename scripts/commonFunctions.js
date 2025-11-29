@@ -7,7 +7,7 @@ export function createTextElement(type, className, value){
     return element;
 }
 
-export function createUnitSelector(productId) {
+export function createUnitSelector(productContainer, productId) {
     /* Create unit selector that is input field
     but has bigger minus and plus signs on each side of the input field.
     Also unit is displayed between the input field and the plus sign
@@ -15,6 +15,10 @@ export function createUnitSelector(productId) {
 
     const inputContainerElement = document.createElement("div");
     inputContainerElement.className = "unitSelectorContainer d-flex p-2 flex-row justify-content-around align-items-center";
+
+    // Toast region
+    const toastRegion = createToastRegionForCartUpdates();
+    productContainer.appendChild(toastRegion);
 
     // Minus button
     const minusButton = document.createElement("button");
@@ -25,6 +29,8 @@ export function createUnitSelector(productId) {
     minusButton.addEventListener('click', ()=>{
         updateProductQuantityInShoppingCart(productId, -1);
         inputElement.value = getProductQuantity(productId);
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastRegion);
+        toastBootstrap.show();
     });
 
     // Numeric input
@@ -43,9 +49,13 @@ export function createUnitSelector(productId) {
             inputElement.blur();
         }
     });
+
     // Update the quantity in the cart based on new quantity.
+
     inputElement.addEventListener('change', function (evt) {
         updateProductQuantityInShoppingCart(productId, inputElement.value - getProductQuantity(productId));
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastRegion);
+        toastBootstrap.show();
     });
 
     // Unit
@@ -61,6 +71,8 @@ export function createUnitSelector(productId) {
     plusButton.addEventListener('click', ()=>{
         updateProductQuantityInShoppingCart(productId, 1);
         inputElement.value = getProductQuantity(productId);
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastRegion);
+        toastBootstrap.show();
     });
 
     // Append all parts to the container
@@ -73,3 +85,39 @@ export function createUnitSelector(productId) {
     return inputContainerElement;
 }
 
+function createToastRegionForCartUpdates() {
+    /*
+    Create toast region similar to:
+    <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+            Hello, world! This is a toast message.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+
+    */
+    const toastElement = createTextElement("div", "toast toastStyle");
+
+    // Accessibility settings
+    toastElement.role = "alert";
+    toastElement.setAttribute("aria-live", "assertive");
+    toastElement.setAttribute("aria-atomic", "true");
+
+    // Container to add closing button and text
+
+    const flexContainer = createTextElement("div", "d-flex", "");
+    toastElement.appendChild(flexContainer);
+
+    const toastBody = createTextElement("div", "toast-body", "Cart updated.");
+    flexContainer.append(toastBody);
+
+    const closeButton = createTextElement("button", "btn-close me-2 m-auto", "");
+    closeButton.setAttribute("data-bs-dismiss", "toast");
+    closeButton.setAttribute("aria-label", "Close");
+    closeButton.style = "color:black;"
+    flexContainer.append(closeButton);
+    
+    return toastElement;
+}
