@@ -65,6 +65,7 @@ nav a:hover {
     font-weight: bold;
     text-align: center;
     line-height: 1em;
+    margin: 0 10px;
 }
 
 .darkContainer, .lightContainer, .productContainer, .dataContainer{
