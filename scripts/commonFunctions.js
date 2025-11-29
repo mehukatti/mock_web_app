@@ -7,18 +7,21 @@ export function createTextElement(type, className, value){
     return element;
 }
 
-export function createUnitSelector(productContainer, productId) {
+export function createUnitSelector(productId) {
     /* Create unit selector that is input field
     but has bigger minus and plus signs on each side of the input field.
     Also unit is displayed between the input field and the plus sign
     */
+    const toastInputContainer = document.createElement("div"); //create extra container to align toast properly.
+
 
     const inputContainerElement = document.createElement("div");
+    toastInputContainer.appendChild(inputContainerElement);
     inputContainerElement.className = "unitSelectorContainer d-flex p-2 flex-row justify-content-around align-items-center";
 
     // Toast region
     const toastRegion = createToastRegionForCartUpdates();
-    productContainer.appendChild(toastRegion);
+    toastInputContainer.appendChild(toastRegion);
 
     // Minus button
     const minusButton = document.createElement("button");
@@ -82,7 +85,7 @@ export function createUnitSelector(productContainer, productId) {
         unitElement,
         plusButton
     );
-    return inputContainerElement;
+    return toastInputContainer;
 }
 
 function createToastRegionForCartUpdates() {

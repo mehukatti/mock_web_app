@@ -91,6 +91,6 @@ function createShopRow(productElement, productData){
     shopRowElement.appendChild(priceElement);
 
     // Unit selector
-    const inputElement = createUnitSelector(productElement, productData.id);
+    const inputElement = createUnitSelector(productData.id);
     shopRowElement.appendChild(inputElement);
 }

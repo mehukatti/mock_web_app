@@ -39,11 +39,6 @@ function getProductData(productId, dataJson){
         }
         
     })
-    .catch((error) => {
-        const p = document.createElement("p");
-        p.appendChild(document.createTextNode(`Error: ${error.message}`));
-        document.body.insertBefore(p, mainContent);
-    });
 }
 
 function updateProductTemplate(productData){
