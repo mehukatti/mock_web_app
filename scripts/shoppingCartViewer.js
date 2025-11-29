@@ -96,24 +96,24 @@ async function createCartRow(productId, units) {
 
     // Create mini image and link
     // Container for the link and image
-    var columnElement = createTextElement("th", "align-middle p-3");
+    var columnElement = createTextElement("th", "align-middle columnSpacingStyle");
     columnElement.scope = "row";
     tableRow.appendChild(columnElement);
     createImageLink(columnElement, productData);
 
     // Price
     var value = `${productData.price.toString()} ${productData.unit}`;
-    var columnElement = createTextElement("td", "align-middle p-3 ", value);
+    var columnElement = createTextElement("td", "align-middle columnSpacingStyle ", value);
     tableRow.appendChild(columnElement);
 
     // Unit selector
-    var columnElement = createTextElement("td", "align-middle p-3", "");
+    var columnElement = createTextElement("td", "align-middle columnSpacingStyle", "");
     tableRow.appendChild(columnElement);
     const inputElement = createUnitSelector(productData.id);
     columnElement.appendChild(inputElement);
 
     // Total cost
-    var rowTotalPriceElement = createTextElement("td", "align-middle p-3", `${(units*productData.price).toString()} €`);
+    var rowTotalPriceElement = createTextElement("td", "align-middle columnSpacingStyle", `${(units*productData.price).toString()} €`);
     tableRow.appendChild(rowTotalPriceElement);
 
     /* Add event listener to
@@ -154,10 +154,10 @@ function createTotalRow() {
     
     // Gotta create empty columns to match the column spacing
     for (var title of ["", "", "Total"]) {
-        var columnElement = createTextElement("th", "align-middle p-3", title);
+        var columnElement = createTextElement("th", "align-middle columnSpacingStyle", title);
         totalRow.appendChild(columnElement);
     }
-    var totalPriceElement = createTextElement("th", "align-middle p-3", "");
+    var totalPriceElement = createTextElement("th", "align-middle columnSpacingStyle", "");
     // Calculate the total price
     totalCartPrice()
     .then((totalPrice) => {

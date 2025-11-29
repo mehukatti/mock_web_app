@@ -14,7 +14,7 @@
 /* On small screens, reduce the padding */
 @media (max-width: 900px) {
     .tableContainer {
-        padding: 1rem; /* less padding on mobile */
+        padding: 0; /* No padding on mobile to better fit table row in width */
     }
 }
 
@@ -46,4 +46,8 @@ a.normalLink {
 
 .colorTheme {
     color:rgb(1 50 31);
+}
+
+.columnSpacingStyle {
+    padding: 1em 5px;
 }
