@@ -132,6 +132,7 @@ button {
     border-radius: 20px;
     height: 40px;
     padding: 0 1em;
+    margin: 1em 0;
     float: right;
 }
 
