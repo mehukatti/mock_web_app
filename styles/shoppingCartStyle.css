@@ -17,9 +17,14 @@
 table {
     width: 100%; /* make the table fill the container */
     margin: 0 auto; /* ensure inner table stays centered */
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 1em;
     font-size: 1em;
+}
+
+table tr:not(:last-child) td,
+table tr:not(:last-child) th {
+  border-bottom: 1px solid rgb(192 249 226);
 }
 
 tbody th {
