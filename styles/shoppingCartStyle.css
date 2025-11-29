@@ -18,6 +18,13 @@
 table {
     width: 100%; /* make the table fill the container */
     margin: 0 auto; /* ensure inner table stays centered */
+    border-collapse: separate;
+    border-spacing: 1em;
+    font-size: 1em;
+}
+
+tbody th {
+    font-weight: normal;
 }
 
 .miniImageContainer {

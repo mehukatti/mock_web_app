@@ -49,7 +49,7 @@ function createClearShoppingCartButton() {
 
 function createShoppingCartTable(cartContents) {
     // The second "table" is bootstrap table
-    const tableElement = createTextElement("table", "table colorTheme");
+    const tableElement = createTextElement("table", "table-primary table-hover colorTheme");
     tableElement.id = "cartTable";
     tableContainerElement.appendChild(tableElement);
 
@@ -60,7 +60,8 @@ function createShoppingCartTable(cartContents) {
 
     const titles = ["Product", "Price", "Quantity", "Total"];
     for (var title of titles) {
-        var columnElement = createTextElement("th", "", title);
+        var columnElement = document.createElement("th");
+        columnElement.innerHTML = title;
         titleRow.appendChild(columnElement);
     }
     tableHeader.appendChild(titleRow);
@@ -94,23 +95,23 @@ async function createCartRow(productId, units) {
 
     // Create mini image and link
     // Container for the link and image
-    var columnElement = createTextElement("th", "align-middle");
+    var columnElement = createTextElement("td", "align-middle");
     tableRow.appendChild(columnElement);
     createImageLink(columnElement, productData);
 
     // Price
     var value = `${productData.price.toString()} ${productData.unit}`;
-    var columnElement = createTextElement("th", "align-middle", value);
+    var columnElement = createTextElement("td", "align-middle", value);
     tableRow.appendChild(columnElement);
 
     // Unit selector
-    var columnElement = createTextElement("th", "align-middle", "");
+    var columnElement = createTextElement("td", "align-middle", "");
     tableRow.appendChild(columnElement);
     const inputElement = createUnitSelector(productData.id);
     columnElement.appendChild(inputElement);
 
     // Total cost
-    var rowTotalPriceElement = createTextElement("th", "align-middle", `${(units*productData.price).toString()} €`);
+    var rowTotalPriceElement = createTextElement("td", "align-middle", `${(units*productData.price).toString()} €`);
     tableRow.appendChild(rowTotalPriceElement);
 
     /* Add event listener to

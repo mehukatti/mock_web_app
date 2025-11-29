@@ -16,12 +16,7 @@ img{
     width: 100%;
 }
 
-/* Nav style*/
-.container {
-    margin: 0px;
-}
-
-/* Increase size in big screens */
+/* Keep same area of navbar contents in big screens */
 @media (min-width: 1600px) {
     .container {
         min-width: 1600px;
@@ -30,6 +25,7 @@ img{
 
 .navbar {
     height: 4em;
+    text-align: left;
 }
 
 .navbar-dark, .bg-dark {
@@ -39,6 +35,7 @@ img{
 
 nav a {
     color: rgb(192 249 226);
+    text-decoration-line: none;
 }
 
 nav a:hover {
@@ -74,8 +71,8 @@ nav a:hover {
 
 .darkContainer, .lightContainer, .productContainer, .dataContainer{
     border-radius: 10px;
-    margin: 3rem;
-    padding: 3rem;
+    margin: 2.5rem;
+    padding: 2.5rem;
 }
 
 .productContainer{
@@ -108,7 +105,7 @@ nav a:hover {
     }
 }
 
-.unitSelector, .lightContainer, .productContainer, .dataContainer, .nav_style a:hover{
+.unitSelector, .lightContainer, .productContainer, .dataContainer {
     background-color: rgb(192 249 226);
     color:rgb(1 50 31);
 }
@@ -121,7 +118,7 @@ nav a:hover {
     max-width: 135px;
 }
 
-.darkContainer, .nav_style, .nav_style a{
+.darkContainer {
     background-color: rgb(1 50 31);
     color:rgb(192 249 226);
     text-decoration: none;

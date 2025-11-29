@@ -18,7 +18,7 @@ export function createUnitSelector(productId) {
 
     // Minus button
     const minusButton = document.createElement("button");
-    const minusIcon = createTextElement("div", "glyphicon glyphicon-minus", ""); // From bootstrap
+    const minusIcon = createTextElement("i", "bi bi-dash", ""); // From bootstrap
     minusIcon.alt = "-";
     minusButton.append(minusIcon);
     // If clicked, minus one from the cart and update the input value
@@ -54,7 +54,7 @@ export function createUnitSelector(productId) {
 
     // Plus button
     const plusButton = document.createElement("button");
-    const plusIcon = createTextElement("div", "glyphicon glyphicon-plus", ""); // From bootstrap
+    const plusIcon = createTextElement("i", "bi bi-plus", ""); // From bootstrap
     plusIcon.alt = "+";
     plusButton.append(plusIcon);
     // If clicked, plus one from the cart and update the input value
