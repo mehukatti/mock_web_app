@@ -3,9 +3,8 @@
 }
 
 .tableContainer {
-    padding: 3rem;
     max-width: 1020px;
-    margin: 3rem auto;
+    margin: 0 auto;
 }
 
 /* On small screens, reduce the padding */
