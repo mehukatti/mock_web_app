@@ -49,7 +49,7 @@ function createClearShoppingCartButton() {
 
 function createShoppingCartTable(cartContents) {
     // The second "table" is bootstrap table
-    const tableElement = createTextElement("table", "table-primary table-hover colorTheme");
+    const tableElement = createTextElement("table", "table-primary colorTheme");
     tableElement.id = "cartTable";
     tableContainerElement.appendChild(tableElement);
 
