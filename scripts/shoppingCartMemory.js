@@ -48,7 +48,7 @@ export function isCartEmpty() {
     Therefore, there may be left some keys with zero quantities
     */
     var mockWebAppCart = getCartContent();
-    if (jQuery.isEmptyObject(mockWebAppCart)) {
+    if ( Object.keys(mockWebAppCart).length == 0 ) {
         // There is no items in localStorage
         return true;
     }
