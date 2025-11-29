@@ -60,11 +60,9 @@ nav a:hover {
 .customHeading {
     display: block;
     font-size: 3em;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     font-weight: bold;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
     text-align: center;
     line-height: 1em;
 }
