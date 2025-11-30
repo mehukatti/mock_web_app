@@ -36,6 +36,26 @@ export function createUnitSelector(productId) {
         toastBootstrap.show();
     });
 
+    // Disable if quantity is zero
+    minusButton.disabled = true;
+    if ( getProductQuantity(productId) > 0 ) {
+        minusButton.disabled = false;
+    }
+
+    // Event listener to update the disabled status of the button if cart contents is updated.
+    window.addEventListener("cartUpdated", (event) => {
+        if (event.detail.productId === productId) {
+            const updatedUnits = getProductQuantity(productId);
+            if ( updatedUnits < 1 ) {
+                minusButton.disabled = true;
+                console.log("Disabled the minus");
+            } else {
+                minusButton.disabled = false;
+                console.log("Enabled the minus");
+            }
+        }
+    });
+
     // Numeric input
     const inputElement = document.createElement("input");
     inputElement.className = "unitSelector";
