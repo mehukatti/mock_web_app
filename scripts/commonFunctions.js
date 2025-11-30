@@ -1,4 +1,4 @@
-import { updateProductQuantityInShoppingCart, getProductQuantity } from './shoppingCartMemory.js';
+import { updateProductQuantityInShoppingCart, getProductQuantity, getTotalCartCount } from './shoppingCartMemory.js';
 
 export function createTextElement(type, className, value){
     var element = document.createElement(type); // Would like this to be a explanation element type
@@ -53,6 +53,7 @@ export function createUnitSelector(productId) {
                 minusButton.disabled = false;
                 console.log("Enabled the minus");
             }
+            console.log("Updated minus button disabled state");
         }
     });
 

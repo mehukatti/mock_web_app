@@ -127,6 +127,7 @@ async function createCartRow(productId, units) {
             if ( updatedUnits == 0 ) {
                 // If the new quantity is zero, reload the whole page to remove null rows.
                 tableRow.remove(); // Is this way compliant with the WCAG 2.1?
+                console.log("Removed row from table");
             } else {
                 // Otherwise update the price
                 rowTotalPriceElement.textContent = `${(updatedUnits * productData.price).toString()} €`;
@@ -135,6 +136,7 @@ async function createCartRow(productId, units) {
                 totalCartPrice()
                 .then((totalPrice) => {
                     totalPriceElement.textContent = `${totalPrice.toString()} €`;
+                    console.log("Updated the total price in cart view");
                 })
                 .catch(console.error)
             }

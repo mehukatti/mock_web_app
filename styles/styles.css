@@ -42,6 +42,29 @@ nav a:hover {
     color: white;
 }
 
+.cartCounterCircle {
+    background-color: white;
+    color: rgb(1 50 31);
+    width: 25px;
+    height: 16px;
+    border-radius: 20px;
+    margin: 0;
+    padding: 2px;
+    position: relative;
+    top: -10px;
+    right: 10px;
+
+    text-align: center;
+    text-wrap-mode: none;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+/* If cart is empty make the counter transparent */
+.cartCounterCircle:empty {
+    background-color: transparent;
+}
+
 /* To avoid vertical scroll bar caused by bootstrap */
 .row {
     margin-left: 0;

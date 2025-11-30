@@ -30,6 +30,18 @@ export function updateProductQuantityInShoppingCart(productId, units) {
     window.dispatchEvent(new CustomEvent("cartUpdated", {
         detail: { productId }
     }));
+    console.log("Updated cart in localStorage");
+}
+
+export function clearCart() {
+    /* Remove the whole cart from the localStorage
+    */
+    localStorage.removeItem(cartKeyName);
+    // Notify listeners that the cart changed
+    window.dispatchEvent(new CustomEvent("cartUpdated", {
+        detail: { productId }
+    }));
+    console.log("Removed cart from localStorage");
 }
 
 export function getCartContent() {
@@ -58,10 +70,19 @@ export function isCartEmpty() {
     return true;
 }
 
-export function clearCart() {
-    /* Remove the whole cart from the localStorage
-    */
-    localStorage.removeItem(cartKeyName);
+export function getTotalCartCount() {
+    /* Count the total number of items in the cart */
+    var totalCount = 0;
+
+    const mockWebAppCart = getCartContent();
+
+    // Iterate cart
+    for (const [productId, units]  of Object.entries(mockWebAppCart)) {
+        if ( units > 0 ) {
+            totalCount += parseInt(units);
+        }
+    }
+    return totalCount;
 }
 
 export function getProductQuantity(productId) {
