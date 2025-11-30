@@ -39,11 +39,10 @@ function createClearShoppingCartButton() {
 
     // Add event listener to clear cart contains and update the table
     clearingButton.addEventListener('click', ()=>{
-        clearCart();
-        clearingButton.remove();
-        const cartElement = document.getElementById("cartTable");
-        cartElement.remove();
-        populateShoppingCartTable();
+        if ( confirm("This will delete everything from your cart and refresh the page. Are you sure?") == true ) {
+            clearCart();
+            window.location.reload();
+        }
     });
 }
 
