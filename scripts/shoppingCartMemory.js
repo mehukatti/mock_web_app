@@ -14,17 +14,12 @@ export function updateProductQuantityInShoppingCart(productId, units) {
 
     // Is the product in the cart already?
     if ( mockWebAppCart.hasOwnProperty(String(productId)) ) {
-        // If the productId is in the mockWebAppCart, update to it
-        if (mockWebAppCart[productId] + parseInt(units) < 1) {
-            mockWebAppCart[productId] = Math.max(
-                0,
-                mockWebAppCart[productId] + parseInt(units)
-            );
-        } else {
-            mockWebAppCart[productId] = mockWebAppCart[productId] + parseInt(units);
-        }
+        mockWebAppCart[productId] = Math.max(
+            0,
+            mockWebAppCart[productId] + parseInt(units)
+        );
         
-    } else {
+    } else if ( parseInt(units) > 0 ) {
         // If the productId is not in the mockWebAppCart, add it
         mockWebAppCart[productId] = parseInt(units);
     }
