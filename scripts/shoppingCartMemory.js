@@ -37,10 +37,6 @@ export function clearCart() {
     /* Remove the whole cart from the localStorage
     */
     localStorage.removeItem(cartKeyName);
-    // Notify listeners that the cart changed
-    window.dispatchEvent(new CustomEvent("cartUpdated", {
-        detail: { productId }
-    }));
     console.log("Removed cart from localStorage");
 }
 
