@@ -1,5 +1,5 @@
 # Mock Web App
-See the "app": https://mehukatti.github.io/mock_web_app/
+See the "app": https://bittikatti.github.io/mock_web_app/
 
 ## Purpose
 This web app was intended for learning and personal CV building purposes.
